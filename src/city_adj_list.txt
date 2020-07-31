@@ -1,0 +1,48 @@
+blue san_francisco chicago los_angeles manila tokyo
+blue chicago montreal atlanta mexico_city los_angeles san_francisco
+blue montreal chicago new_york washington
+blue new_york london madrid washington montreal
+blue washington montreal new_york atlanta
+blue atlanta washington miami chicago
+blue london essen paris madrid new_york
+blue madrid london paris algiers sao_paolo new_york
+blue paris essen milan algiers madrid london
+blue essen st_petersburg milan paris london
+blue milan essen istanbul paris
+blue st_petersburg moscow istanbul essen
+yellow los_angeles chicago mexico_city sydney san_francisco
+yellow mexico_city chicago miami bogota lima los_angeles
+yellow miami washington bogota mexico_city atlanta
+yellow bogota miami sao_paolo buenos_aires lima mexico_city
+yellow lima bogota santiago mexico_city
+yellow santiago lima
+yellow sao_paolo madrid lagos buenos_aires bogota
+yellow buenos_aires sao_paolo bogota
+yellow lagos khartoum kinshasa sao_paolo
+yellow kinshasa khartoum johannesburg lagos
+yellow khartoum johannesburg kinshasa lagos cairo
+yellow johannesburg khartoum kinshasa
+black algiers istanbul cairo madrid paris
+black istanbul st_petersburg moscow baghdad cairo algiers milan
+black cairo istanbul baghdad riyadh khartoum algiers
+black moscow tehran istanbul st_petersburg
+black baghdad tehran karachi riyadh cairo istanbul
+black riyadh karachi cairo baghdad
+black tehran delhi karachi baghdad moscow
+black karachi delhi mumbai riyadh baghdad tehran
+black mumbai delhi chennai karachi
+black delhi kolkata chennai mumbai karachi tehran
+black chennai kolkata bangkok jakarta mumbai delhi
+black kolkata hong_kong bangkok chennai delhi
+red bangkok hong_kong ho_chi_minh_city jakarta chennai kolkata
+red jakarta bangkok ho_chi_minh_city sydney chennai
+red beijing seoul shanghai
+red shanghai seoul tokyo hong_kong beijing
+red hong_kong taipei manila ho_chi_minh_city bangkok kolkata shanghai
+red ho_chi_minh_city hong_kong manila jakarta bangkok
+red seoul tokyo shanghai beijing
+red taipei osaka manila hong_kong shanghai
+red manila san_francisco sydney ho_chi_minh_city hong_kong taipei
+red sydney los_angeles jakarta manila
+red tokyo san_francisco osaka shanghai seoul
+red osaka taipei tokyo
