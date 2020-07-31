@@ -48,8 +48,9 @@ class PlayerHand:
         if card in self.hand:
             raise ValueError("Can't add, card already in player hand")
 
-        if len(self.hand) == self.size_limit:
-            raise ValueError(constants.PLAYER_HAND_FULL_ERROR)
+        if len(self.hand) >= self.size_limit:
+            # self.hand.append(card) #TODO let bot choose
+            raise ValueError(constants.PLAYER_HAND_FULL_ERROR, card)
 
         self.hand.append(card)
         reward_tracker.change_reward_level('hand_{}'.format(str(self)))

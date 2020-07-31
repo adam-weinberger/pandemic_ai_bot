@@ -5,7 +5,10 @@ from stable_baselines.common.policies import MlpPolicy
 from stable_baselines import PPO2
 from stable_baselines.common.env_checker import check_env
 from stable_baselines.common.callbacks import CheckpointCallback
-
+from stable_baselines.common.vec_env import DummyVecEnv
+from setuptools import  setup
+from gym.envs.registration import register
+import caffeine
 
 class GameEnv(gym.Env):
 
@@ -30,7 +33,7 @@ class GameEnv(gym.Env):
 
     def step(self, action):
         action_name = self.action_list[action]
-        observation, reward, done, info = self.game.step(action_name)
+        observation, reward, done, info = self.game.step(action_name) #TODO rescale observations
         return observation, reward, done, info
 
     def reset(self):
@@ -46,18 +49,40 @@ class GameEnv(gym.Env):
 
 if __name__ == "__main__":
 
+    register(
+        id='pandemic-v0',
+        entry_point='gym_foo.envs:FooEnv',
+    )
+
     game_env = GameEnv()
+    print("Checking")
     check_env(game_env)
 
-    model = PPO2(MlpPolicy, game_env, verbose=1)
+    # Create save dir
+    save_dir = "../logs/"
+    model_filename = "/rl_model"
 
-    checkpoint_callback = CheckpointCallback(save_freq=1000, save_path='../logs/',
-                                             name_prefix='rl_model')
-    model.learn(total_timesteps=100000, callback=checkpoint_callback)
+    # load the model, and when loading set verbose to 1
+    print("Loading")
+    loaded_model = PPO2.load(save_dir + model_filename, verbose=1, env=DummyVecEnv([GameEnv]))
+
+    # show the save hyperparameters
+    print("loaded:", "gamma =", loaded_model.gamma, "n_steps =", loaded_model.n_steps)
+
+    # model = PPO2(MlpPolicy, game_env, verbose=1)
+
+    checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=save_dir,
+                                             name_prefix=model_filename)
+
+    print("Learning")
+    loaded_model.learn(total_timesteps=100000, callback=checkpoint_callback)
+
+    loaded_model.save(save_dir + model_filename)
+
 
     obs = game_env.reset()
 
     for i in range(1000):
-        action, _states = model.predict(obs)
+        action, _states = loaded_model.predict(obs)
         obs, rewards, dones, info = game_env.step(action)
         game_env.render()

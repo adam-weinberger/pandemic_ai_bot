@@ -5,13 +5,15 @@ from cards import EpidemicCard
 import pandas as pd
 from infection_rate import InfectionRate
 from outbreak_counter import OutbreakCounter
-from collections import Counter
+from collections import Counter, namedtuple
 import random
 from gym import spaces
 import numpy as np
 from city import City
 import logging
 import pdb
+import math
+from queue import Queue
 
 
 class BotGame(Game):
@@ -19,19 +21,20 @@ class BotGame(Game):
     def __init__(self, num_players, num_epidemics):
 
         super().__init__(num_players, num_epidemics)
-
+        
+        # create look up list from action name to action obd
         self.create_action_dict()
 
         self.state_df = None
-
+        
+        # track the step the game is in
         self.create_game_steps()
-
+        
+        # set the initial reward level and state data frame
         self.reward_level = 0
         _, _ = self.game_state_reward()
 
         self.info = {}
-
-        # initialize game object. Game has players, epidemics, diseases. it takes care of managing each turn
 
 
     def reset(self):
@@ -44,15 +47,18 @@ class BotGame(Game):
         self.create_decks()
         self.create_players()
 
+        # create look up list from action name to action obd
         self.create_action_dict()
 
         self.state_df = None
 
+        # track the step the game is in
         self.create_game_steps()
         status_str = "Game step {}".format(self.game_step)
         print(status_str)
         logging.info(status_str)
 
+        # set the initial reward level and state data frame
         self.reward_level = 0
         observation, _ = self.game_state_reward()
 
@@ -87,7 +93,9 @@ class BotGame(Game):
             self.action_dict[disease_name] = disease
 
     def create_game_steps(self):
-
+        
+        # game steps track where the game is so the bar and the game know what actions are valid
+        # game steps are player actions 1-4, player arg 1-4,draw cards
         self.game_step_list = []
         for i in range(constants.NUM_ACTIONS):
             self.game_step_list.append("player action {}".format(i+1))
@@ -109,6 +117,10 @@ class BotGame(Game):
             logging.info(status_str)
 
     def create_observation_space(self):
+
+        # observation space is feasible region for observation (or state) for reinforcement learning algorithm
+        # this space has 416 spaces within it for each variable (e.g. num disease cubes in city A). then each variable has all the possible values in its (e.g. city A can have 0-6 cubes)
+        
 
         game_bot_obs_space = []
 
@@ -146,8 +158,6 @@ class BotGame(Game):
 
             elif "total_diseases_cured" in col:
                 game_bot_obs_space.append(len(constants.DISEASE_COLORS) + 1) #+1 b/c includes 0
-
-        #game_bot_obs_space = tuple(game_bot_obs_space)
 
         return spaces.MultiDiscrete(game_bot_obs_space)
 
@@ -261,6 +271,9 @@ class BotGame(Game):
 
         self.state_df = state_df
 
+        if len(state_dict) == 413:
+            pdb.set_trace()
+
         return state_np, reward
 
     def check_done(self):
@@ -372,18 +385,20 @@ class BotGame(Game):
         # if not elif b/c player arg 4 goes straight to draw cards
         if self.game_step == "draw cards":
 
+            #may run out of cards, losing game
             try:
+
                 self.bot_draw_cards()
 
             except Exception as e:
 
-                if str(e) == constants.PLAYER_HAND_FULL_ERROR:
+                if str(e.args[1]) == "lose":
 
                     observation, reward = self.game_state_reward()
                     done = self.check_done()
+                    
                     return observation, reward, done, info
 
-                        
             self._increment_game_step()
         
         observation, reward = self.game_state_reward()
@@ -410,21 +425,24 @@ class BotGame(Game):
         
         if self.current_player.current_city.total_disease_cubes() > 0:
             valid_action_list.append('treat_disease')
-        
-        card_colors = [card.color for card in self.current_player.player_hand.hand if not isinstance(card, EpidemicCard)]
-        card_colors = Counter(card_colors)
-        max_card_color = max([count for count in card_colors.values()])
-        if self.current_player.current_city.has_research_station and max_card_color >= constants.NUM_CARDS_FOR_CURE: #wont work for any roles that require different number of cards for cure (TODO)
-            # valid_action_list.append('discover_cure')
-            pass
-        
+
+        if len(self.current_player.cards()) >= 1:
+            card_colors = [card.color for card in self.current_player.cards() if not isinstance(card, EpidemicCard)]
+            card_colors = Counter(card_colors)
+            max_card_color = max([count for count in card_colors.values()])
+            if self.current_player.current_city.has_research_station and max_card_color >= constants.NUM_CARDS_FOR_CURE: #wont work for any roles that require different number of cards for cure (TODO)
+                valid_action_list.append('discover_cure')
+
         # hard to check if the players are in the same city especially if there are more than 2 players (TODO)
-        if  not self.current_player.player_hand.contains_city(self.current_player.current_city):
+        if not self.current_player.player_hand.contains_city(self.current_player.current_city):
             valid_action_list.append('give_knowledge')
 
         
         # hard to check criteria especially with more than 2 players (TODO)
         # valid_action_list.append("take_knowledge")
+
+        if self.game_step == "draw_cards":
+            valid_action_list.append('discard_card')
 
         return valid_action_list
 
@@ -439,6 +457,10 @@ class BotGame(Game):
         if "action 1" in self.game_step:
             self.turn_num += 1
             status_str = "Turn num: {}".format(self.turn_num)
+            print(status_str)
+            logging.info(status_str)
+
+            status_str = "Reward level: {}".format(self.reward_level)
             print(status_str)
             logging.info(status_str)
 
@@ -461,64 +483,124 @@ class BotGame(Game):
         logging.info("player_draw_cards")
 
         # for each card to draw
-        for _ in range(constants.NUM_PLAYER_CARDS_DRAW):
+        for i in range(constants.NUM_PLAYER_CARDS_DRAW):
             card = self.player_card_deck.draw()
-            status_str = "Card drawn: {}".format(card)
+            status_str = "Card drawn {}: {}".format(i, card)
             print(status_str)
             logging.info(status_str)
 
             if isinstance(card, EpidemicCard):
-                pdb.set_trace()
+
                 card.cause_epidemic()
 
-            
             else:
-                self.current_player.add_card(card)
+                try:
+                    self.current_player.add_card(card)
+
+                except Exception as e:
+
+                    if str(e.args[0]) == constants.PLAYER_HAND_FULL_ERROR:
+
+                        player_hand_with_new_card = self.current_player.cards()
+                        player_hand_with_new_card.append(e.args[1])
+                        card_colors = [card.color for card in player_hand_with_new_card]
+                        card_colors = Counter(card_colors)
+                        least_common = card_colors.most_common()[-1]
+                        least_common_color = least_common[0]
+
+                        for card in player_hand_with_new_card:
+                            
+                            #if least common color get rid of it
+                            if card.color == least_common_color:
+
+                                if card == e.args[1]:
+                                    self.player_card_discard_deck.add(card)
+                                else:
+                                    self.current_player.discard_card(card) #don't need to add b/c appended to list reference above
+                                break
+
 
 
     def render(self, mode):
         pass
         # print("Game step {}".format(self.game_step))
 
-    # def dijkstra(self, aGraph, start, target):
-    #     '''Dijkstra's shortest path'''
-    #     # Set the distance for the start node to zero
-    #     start.set_distance(0)
-    #
-    #     # Put tuple pair into the priority queue
-    #     unvisited_queue = [(v.get_distance(), v) for v in aGraph]
-    #     heapq.heapify(unvisited_queue)
-    #
-    #     while len(unvisited_queue):
-    #         # Pops a vertex with the smallest distance
-    #         uv = heapq.heappop(unvisited_queue)
-    #         current = uv[1]
-    #         current.set_visited()
-    #
-    #         # for next in v.adjacent:
-    #         for next in current.adjacent:
-    #             # if visited, skip
-    #             if next.visited:
-    #                 continue
-    #             new_dist = current.get_distance() + current.get_weight(next)
-    #
-    #             if new_dist < next.get_distance():
-    #                 next.set_distance(new_dist)
-    #                 next.set_previous(current)
-    #                 print
-    #                 'updated : current = %s next = %s new_dist = %s' \
-    #                 % (current.get_id(), next.get_id(), next.get_distance())
-    #             else:
-    #                 print
-    #                 'not updated : current = %s next = %s new_dist = %s' \
-    #                 % (current.get_id(), next.get_id(), next.get_distance())
-    #
-    #         # Rebuild heap
-    #         # 1. Pop every item
-    #         while len(unvisited_queue):
-    #             heapq.heappop(unvisited_queue)
-    #         # 2. Put all vertices not visited into the queue
-    #         unvisited_queue = [(v.get_distance(), v) for v in aGraph if not v.visited]
-    #         heapq.heapify(unvisited_queue)
+    def dijkstra(self, start_city):
+        '''Dijkstra's shortest path'''
+        # set all city distances to infinity, except current city zero
+        self.city_dist = {city_name: math.inf for city_name in self.city_dict.keys()}
+        self.city_dist[start_city.name] = 0
+        cities_in_player_hand = [card.city.name for card in self.current_player.cards()]
+
+        # add current city to unvisited_queue
+        unvisited_queue = []#Queue(maxsize=len(self.city_dist))
+        unvisited_queue.append(start_city)#unvisited_queue.put(start_city)
+        visited_list = []
+
+        # for next city in unvisited_queue, if no cities left then finish
+        while unvisited_queue:#not unvisited_queue.empty():
+            print('loop')
+            
+            current_city = unvisited_queue.pop(0)#unvisited_queue.get()
+            print(str(current_city))
+
+            # find all neighbors of current city
+            # current_city.neighbors
+            neighbors = [neighbor for neighbor in current_city.neighbors]
+
+            # if current city in player cards hand, then all cities are neighbors, current city card is played
+            if current_city.name in cities_in_player_hand:
+                neighbors.extend([*self.city_dict.values()])
+                cities_in_player_hand.remove(current_city.name)
+                
+            # player cards in hand for direct flight
+            for _ in range(len(cities_in_player_hand)):
+                city_name = cities_in_player_hand[0] #b/c being removed in for loop
+                city = self.city_dict[city_name]
+                neighbors.append(city)
+                cities_in_player_hand.remove(city_name)
+
+            # if current city has research station then all cities with research station are neighbors
+            if current_city.has_research_station:
+                city_research_station_list = list(filter(lambda city: city.has_research_station, [*self.city_dict.values()]))
+                neighbors.extend(city_research_station_list)
+
+            print("neighbors")
+            print([str(neighbor) for neighbor in neighbors])
+
+            # remove duplicate neighbors
+            neighbors = list(set(neighbors))
+
+            #remove itself (may be added during charter flight or research station shuttle flight)
+            if current_city in neighbors:
+                neighbors.remove(current_city)
+            
+            # get rid of neighbors are in visited list
+            neighbors = list(filter(lambda city: city not in visited_list, neighbors))
+            
+            # get rid of neighbors that are in on visited queue already
+            neighbors = list(filter(lambda  city: city not in unvisited_queue, neighbors))
+
+            print("neighbors 2")
+            print([str(neighbor) for neighbor in neighbors])
+            
+            # set all neighbors to distance 1 + current city distance
+            current_city_dist = self.city_dist[current_city.name]
+
+            for neighbor in neighbors:
+                self.city_dist[neighbor.name] = 1 + current_city_dist
+
+            # add neighbors to unvisited_queue
+            [unvisited_queue.append(neighbor) for neighbor in neighbors]
+            print("unvisited_queue")
+            print(unvisited_queue)
+
+            # add current city to visited list
+            visited_list.append(current_city)
+            print("visited_list")
+            print([str(x) for x in visited_list])
+
+        return self.city_dist
+
 
 

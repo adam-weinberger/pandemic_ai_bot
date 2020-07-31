@@ -33,7 +33,8 @@ class InfectionCardDeck(CardDeck):
 
     
     def add_discard_deck(self, infection_card_discard_deck):
-        self.card_list = self.card_list.extend(infection_card_discard_deck.card_list)
+        self.card_list.extend(infection_card_discard_deck.card_list)
+        infection_card_discard_deck.clear_deck()
 
 class InfectionCardDiscardDeck(CardDeck):
 
@@ -47,8 +48,8 @@ class PlayerCardDeck(CardDeck):
     def draw(self):
 
         if len(self.card_list) == 0:
-            # RuntimeError("No player cards left, you lose", "lose")
-            print("No player cards left, you lose")
+            RuntimeError("No player cards left, you lose", "lose")
+            # print("No player cards left, you lose")
 
         return self.card_list.pop()
 
