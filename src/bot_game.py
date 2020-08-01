@@ -150,6 +150,9 @@ class BotGame(Game):
             elif "player_card" in col:
                 game_bot_obs_space.append(2)
 
+            elif "dist" in col:
+                game_bot_obs_space.append(8) #probably couldn't be higher than 5 but 8 is safe
+
             elif "player" in col: #needs to be after game step list and player cards because they have the word player
                 game_bot_obs_space.append(2)
 
@@ -238,7 +241,13 @@ class BotGame(Game):
         new_reward_level -= OutbreakCounter.outbreak_level * 12
         
 
-        #player, TODO add shortest paths
+        #player, TODO add shortest paths, need to add to action space
+        for player in [*self.player_dict.values()]:
+            city_dist = self.shortest_paths(player.current_city)
+            for city_name, dist in city_dist.items():
+                key = "{}_dist_{}".format(player.name, city_name)
+                state_dict[key] = dist
+
         # TODO distance to research station, 3 cube cities for reward level
         for player_name, player_obj in self.player_dict.items():
             for city_name, city_obj in self.city_dict.items():
@@ -295,8 +304,9 @@ class BotGame(Game):
             if disease.num_cubes <= 0:
                 done = True
 
-        if len(self.player_card_discard_deck.card_list) == 0 and self.game_step == "draw_cards":
+        if len(self.player_card_deck.card_list) == 0 and self.game_step == "draw_cards":
             done = True
+
 
         return done
         
@@ -359,6 +369,7 @@ class BotGame(Game):
             action_function = getattr(self.current_player, self.current_action)
             # possible that action and argument combination is not valid
 
+
             try:
                 action_function(bot_response_obj)
 
@@ -392,7 +403,7 @@ class BotGame(Game):
 
             except Exception as e:
 
-                if str(e.args[1]) == "lose":
+                if len(e.args) > 1 and str(e.args[1]) == "lose":
 
                     observation, reward = self.game_state_reward()
                     done = self.check_done()
@@ -525,7 +536,7 @@ class BotGame(Game):
         pass
         # print("Game step {}".format(self.game_step))
 
-    def dijkstra(self, start_city):
+    def shortest_paths(self, start_city):
         '''Dijkstra's shortest path'''
         # set all city distances to infinity, except current city zero
         self.city_dist = {city_name: math.inf for city_name in self.city_dict.keys()}
@@ -539,10 +550,8 @@ class BotGame(Game):
 
         # for next city in unvisited_queue, if no cities left then finish
         while unvisited_queue:#not unvisited_queue.empty():
-            print('loop')
             
             current_city = unvisited_queue.pop(0)#unvisited_queue.get()
-            print(str(current_city))
 
             # find all neighbors of current city
             # current_city.neighbors
@@ -565,9 +574,6 @@ class BotGame(Game):
                 city_research_station_list = list(filter(lambda city: city.has_research_station, [*self.city_dict.values()]))
                 neighbors.extend(city_research_station_list)
 
-            print("neighbors")
-            print([str(neighbor) for neighbor in neighbors])
-
             # remove duplicate neighbors
             neighbors = list(set(neighbors))
 
@@ -581,9 +587,6 @@ class BotGame(Game):
             # get rid of neighbors that are in on visited queue already
             neighbors = list(filter(lambda  city: city not in unvisited_queue, neighbors))
 
-            print("neighbors 2")
-            print([str(neighbor) for neighbor in neighbors])
-            
             # set all neighbors to distance 1 + current city distance
             current_city_dist = self.city_dist[current_city.name]
 
@@ -592,13 +595,9 @@ class BotGame(Game):
 
             # add neighbors to unvisited_queue
             [unvisited_queue.append(neighbor) for neighbor in neighbors]
-            print("unvisited_queue")
-            print(unvisited_queue)
 
             # add current city to visited list
             visited_list.append(current_city)
-            print("visited_list")
-            print([str(x) for x in visited_list])
 
         return self.city_dist
 

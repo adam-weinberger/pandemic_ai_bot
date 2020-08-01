@@ -9,6 +9,8 @@ from stable_baselines.common.vec_env import DummyVecEnv
 from setuptools import  setup
 from gym.envs.registration import register
 import caffeine
+import os
+import shutil
 
 class GameEnv(gym.Env):
 
@@ -60,23 +62,33 @@ if __name__ == "__main__":
 
     # Create save dir
     save_dir = "../logs/"
-    model_filename = "/rl_model"
+    model_filename = "rl_model"
+
+    checkpoint_dir = save_dir + "most_recent_models/"
+    try:
+        shutil.rmtree(checkpoint_dir)
+    except OSError as e:
+        print(e)
+
+    os.mkdir(checkpoint_dir)
+
 
     # load the model, and when loading set verbose to 1
     print("Loading")
-    loaded_model = PPO2.load(save_dir + model_filename, verbose=1, env=DummyVecEnv([GameEnv]))
+    #loaded_model = PPO2.load(save_dir + model_filename, verbose=1, env=DummyVecEnv([GameEnv]))
+    loaded_model = PPO2(MlpPolicy, game_env, verbose=1)
 
     # show the save hyperparameters
     print("loaded:", "gamma =", loaded_model.gamma, "n_steps =", loaded_model.n_steps)
 
     # model = PPO2(MlpPolicy, game_env, verbose=1)
 
-    checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=save_dir,
+    checkpoint_callback = CheckpointCallback(save_freq=5000, save_path=checkpoint_dir,
                                              name_prefix=model_filename)
 
     print("Learning")
     loaded_model.learn(total_timesteps=100000, callback=checkpoint_callback)
-
+    os.remove(save_dir + model_filename + ".zip")
     loaded_model.save(save_dir + model_filename)
 
 

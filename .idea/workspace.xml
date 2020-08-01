@@ -2,24 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73bdfc83-2193-4eff-b288-a85c23f35488" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/logs/rl_model.zip" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/setup.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/envs/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/envs/pandemic_env.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/rl_model_1000_steps.zip" afterPath="$PROJECT_DIR$/logs/rl_model_1000_steps.zip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/rl_model_2000_steps.zip" afterPath="$PROJECT_DIR$/logs/rl_model_2000_steps.zip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/rl_model_3000_steps.zip" afterPath="$PROJECT_DIR$/logs/rl_model_3000_steps.zip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/rl_model_4000_steps.zip" afterPath="$PROJECT_DIR$/logs/rl_model_4000_steps.zip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_10000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_1000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_11000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_12000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_13000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_14000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_15000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_16000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_17000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_2000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_3000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_4000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_5000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_6000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_7000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_8000_steps.zip" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_9000_steps.zip" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/rl_model.zip" afterPath="$PROJECT_DIR$/logs/rl_model.zip" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/game.log" afterPath="$PROJECT_DIR$/logs/game.log" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/code_development-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/code_development-checkpoint.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/__init__.py" afterPath="$PROJECT_DIR$/src/__init__.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bot_game.py" afterPath="$PROJECT_DIR$/src/bot_game.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/card_decks.py" afterPath="$PROJECT_DIR$/src/card_decks.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/code_development.ipynb" afterPath="$PROJECT_DIR$/src/code_development.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game_env.py" afterPath="$PROJECT_DIR$/src/game_env.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/player_hand.py" afterPath="$PROJECT_DIR$/src/player_hand.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -34,11 +39,23 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="game_env.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bot_game.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/bot_game.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="433">
+              <caret line="306" column="31" lean-forward="true" selection-start-line="306" selection-start-column="31" selection-end-line="306" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#21#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="game_env.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game_env.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="16" column="42" lean-forward="true" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+            <state relative-caret-position="-574">
+              <caret line="26" column="20" lean-forward="true" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -57,10 +74,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>not in op</find>
-      <find>in</find>
-      <find>infe</find>
-      <find>infection</find>
       <find>infection_</find>
       <find>infection_ca</find>
       <find>infection_card</find>
@@ -87,6 +100,10 @@
       <find>action_dict</find>
       <find>logger</find>
       <find>check_done</find>
+      <find>save(</find>
+      <find>_save_to</find>
+      <find>reward</find>
+      <find>reward level</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -137,7 +154,6 @@
         <option value="$PROJECT_DIR$/logs/game.log" />
         <option value="$PROJECT_DIR$/src/player_hand.py" />
         <option value="$PROJECT_DIR$/src/card_decks.py" />
-        <option value="$PROJECT_DIR$/src/bot_game.py" />
         <option value="$PROJECT_DIR$/src/setup.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/src/__init__.py" />
@@ -145,13 +161,13 @@
         <option value="$PROJECT_DIR$/src/envs/pandemic_env.py" />
         <option value="$PROJECT_DIR$/src/env_wrapper.py" />
         <option value="$PROJECT_DIR$/src/game_env.py" />
+        <option value="$PROJECT_DIR$/src/bot_game.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="640" />
     <option name="y" value="23" />
-    <option name="width" value="1280" />
+    <option name="width" value="1920" />
     <option name="height" value="973" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -405,14 +421,14 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="640" y="23" width="1280" height="973" extended-state="0" />
+    <frame x="0" y="23" width="1920" height="973" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.17124394" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11288605" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34506243" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34506243" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -438,15 +454,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/city.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/city_aw.py" />
     <entry file="file://$PROJECT_DIR$/src/player_aw.py" />
     <entry file="file://$PROJECT_DIR$/src/player_hand_aw.py" />
     <entry file="file://$PROJECT_DIR$/src/city.py">
@@ -612,14 +619,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/common/base_class.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="218">
-          <caret line="195" column="22" lean-forward="false" selection-start-line="195" selection-start-column="22" selection-end-line="195" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/disease.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
@@ -672,20 +671,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/ppo2/ppo2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="335" column="0" lean-forward="false" selection-start-line="335" selection-start-column="0" selection-end-line="335" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/envs/pandemic_env.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
           <caret line="11" column="18" lean-forward="true" selection-start-line="11" selection-start-column="18" selection-end-line="11" selection-end-column="18" />
           <folding>
-            <element signature="e#0#10#0" expanded="true" />
+            <element signature="e#0#10#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -724,17 +715,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot_game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-245">
-          <caret line="492" column="0" lean-forward="true" selection-start-line="492" selection-start-column="0" selection-end-line="492" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#21#0" expanded="true" />
-            <marker date="1596222078028" expanded="false" signature="14657:16617" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/epidemic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
@@ -761,12 +741,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/common/base_class.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="591" column="8" lean-forward="false" selection-start-line="591" selection-start-column="8" selection-end-line="591" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/ppo2/ppo2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="434" column="61" lean-forward="false" selection-start-line="434" selection-start-column="61" selection-end-line="434" selection-end-column="61" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2017.1/python_stubs/-785602979/posix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="626" column="4" lean-forward="false" selection-start-line="626" selection-start-column="4" selection-end-line="626" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharmCE2017.1/python_stubs/-785602979/_datetime.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="179">
+          <caret line="217" column="8" lean-forward="false" selection-start-line="217" selection-start-column="8" selection-end-line="217" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/game_env.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="16" column="42" lean-forward="true" selection-start-line="16" selection-start-column="42" selection-end-line="16" selection-end-column="42" />
+        <state relative-caret-position="-574">
+          <caret line="26" column="20" lean-forward="true" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot_game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="433">
+          <caret line="306" column="31" lean-forward="true" selection-start-line="306" selection-start-column="31" selection-end-line="306" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
           </folding>
         </state>
       </provider>
