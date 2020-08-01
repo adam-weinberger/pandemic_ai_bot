@@ -254,8 +254,10 @@ class Game(object):
                 city.add_neighbor(neighbor)
 
         # start city has a research station
+        City.research_station_counter = 0
         if constants.START_CITY_HAS_RESEARCH_STATION:
             self.city_dict[constants.START_CITY].add_research_station()
+
             
         f.close()
 

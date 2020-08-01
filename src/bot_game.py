@@ -43,6 +43,7 @@ class BotGame(Game):
         self.disease_dict = {color: Disease(color) for color in constants.DISEASE_COLORS}
         InfectionRate.infection_level = 0
         OutbreakCounter.outbreak_level = 0
+        Disease.diseases_cured = 0
 
         # create board,player cards, decks, players
         random.seed(235)
@@ -166,7 +167,11 @@ class BotGame(Game):
                 # game_bot_obs_space.append(8) #probably couldn't be higher than 5 but 8 is safe
                 obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
 
-            elif "player" in key: #needs to be after game step list and player cards because they have the word player
+            elif "_in_city_" in key: #which player is in which city
+                # game_bot_obs_space.append(2)
+                obs_space[key] = spaces.Discrete(2)
+
+            elif "'s_turn'" in key:
                 # game_bot_obs_space.append(2)
                 obs_space[key] = spaces.Discrete(2)
 
@@ -291,8 +296,17 @@ class BotGame(Game):
         #player location
         for player_name, player_obj in self.player_dict.items():
             for city_name, city_obj in self.city_dict.items():
-                key = '{}_in_{}'.format(player_name, city_name)
+                key = '{}_in_city_{}'.format(player_name, city_name)
                 state_dict[key] = int(player_obj.current_city == city_obj)
+
+        #which player's turn
+        for player in self.player_dict.values():
+            key = "{}'s_turn".format(player.name)
+            if player == self.current_player:
+                state_dict[key] = 1
+            else:
+                state_dict[key] = 0
+
 
         #state of game info TODO 1:1 with which actions are valid
         for game_step in self.game_step_list:
@@ -327,18 +341,9 @@ class BotGame(Game):
 
     def check_done(self):
         
-        print('checking done')
-        print(len(self.player_card_deck.card_list))
-        print(self.game_step)
-
         done = False
-        diseases_cured = 0
 
-        for disease in [*self.disease_dict.values()]:
-            if int(disease.is_cured):
-                diseases_cured += 1
-
-        if diseases_cured == len(self.disease_dict):
+        if Disease.diseases_cured == len(constants.DISEASE_COLORS):
             done = True
 
         if OutbreakCounter.outbreak_level == 8:
@@ -350,8 +355,6 @@ class BotGame(Game):
 
         if len(self.player_card_deck.card_list) == 0 and self.game_step == "draw cards":
             done = True
-
-        print("Done is {}".format(done))
 
         return done
         
@@ -458,7 +461,8 @@ class BotGame(Game):
                 else:
                     print(e)
 
-
+            self.infect_cities()
+            self.next_player()
 
             self._increment_game_step()
 

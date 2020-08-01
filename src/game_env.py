@@ -75,7 +75,7 @@ if __name__ == "__main__":
 
     # load the model, and when loading set verbose to 1
     print("Loading")
-    #loaded_model = PPO2.load(save_dir + model_filename, verbose=1, env=DummyVecEnv([GameEnv]))
+    # loaded_model = PPO2.load(save_dir + model_filename, verbose=1, env=DummyVecEnv([GameEnv]))
     loaded_model = PPO2(MlpPolicy, game_env, verbose=1)
 
     # show the save hyperparameters
@@ -88,13 +88,15 @@ if __name__ == "__main__":
 
     print("Learning")
     loaded_model.learn(total_timesteps=100000, callback=checkpoint_callback)
+
+    print("Saving")
     os.remove(save_dir + model_filename + ".zip")
     loaded_model.save(save_dir + model_filename)
 
 
-    obs = game_env.reset()
-
-    for i in range(1000):
-        action, _states = loaded_model.predict(obs)
-        obs, rewards, dones, info = game_env.step(action)
-        game_env.render()
+    # obs = game_env.reset()
+    #
+    # for i in range(1000):
+    #     action, _states = loaded_model.predict(obs)
+    #     obs, rewards, dones, info = game_env.step(action)
+    #     game_env.render()
