@@ -18,3 +18,4 @@ PLAYER_ACTION_LIST = ['drive_ferry','direct_flight','charter_flight', 'shuttle_f
 GAME_ACTION_LIST = PLAYER_ACTION_LIST + ['discard_card']
 GAME_STATUSES = ["player action", "player arg", "draw card", "infect cities"]
 MAX_OUTBREAKS = 8
+REWARD_LEVEL_SCALE = 100

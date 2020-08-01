@@ -46,12 +46,17 @@ class PlayerCardDeck(CardDeck):
 
     
     def draw(self):
+        #
+        # if not self.card_list:
+        #     RuntimeError("No player cards left, you lose", "lose")
+        #     # print("No player cards left, you lose")
 
-        if len(self.card_list) == 0:
-            RuntimeError("No player cards left, you lose", "lose")
-            # print("No player cards left, you lose")
+        try:
+            card = self.card_list.pop()
+        except Exception as e:
+            raise RuntimeError("No player cards left, you lose", "lose")
 
-        return self.card_list.pop()
+        return card
 
     def insert_card(self, ind, card):
 

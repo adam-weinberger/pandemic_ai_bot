@@ -2,29 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73bdfc83-2193-4eff-b288-a85c23f35488" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_10000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_1000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_11000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_12000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_13000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_14000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_15000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_16000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_17000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_2000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_3000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_4000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_5000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_6000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_7000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_8000_steps.zip" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model_9000_steps.zip" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/rl_model.zip" afterPath="$PROJECT_DIR$/logs/rl_model.zip" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/game.log" afterPath="$PROJECT_DIR$/logs/game.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/code_development-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/code_development-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bot_game.py" afterPath="$PROJECT_DIR$/src/bot_game.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/card_decks.py" afterPath="$PROJECT_DIR$/src/card_decks.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/code_development.ipynb" afterPath="$PROJECT_DIR$/src/code_development.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game_env.py" afterPath="$PROJECT_DIR$/src/game_env.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/constants.py" afterPath="$PROJECT_DIR$/src/constants.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,11 +25,35 @@
       <file leaf-file-name="bot_game.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/bot_game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="306" column="31" lean-forward="true" selection-start-line="306" selection-start-column="31" selection-end-line="306" selection-end-column="31" />
+            <state relative-caret-position="-124">
+              <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
               <folding>
-                <element signature="e#0#21#0" expanded="true" />
+                <element signature="e#1860#2737#0" expanded="false" />
+                <element signature="e#2789#3811#0" expanded="false" />
+                <marker date="1596306934215" expanded="false" signature="22458:24009" ph="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="outbreak_counter.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/outbreak_counter.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="infection_rate.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/infection_rate.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="56">
+              <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="19" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -54,8 +61,8 @@
       <file leaf-file-name="game_env.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/game_env.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-574">
-              <caret line="26" column="20" lean-forward="true" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+            <state relative-caret-position="173">
+              <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
               <folding>
                 <element signature="e#0#10#0" expanded="true" />
               </folding>
@@ -74,35 +81,35 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>infection_</find>
-      <find>infection_ca</find>
-      <find>infection_card</find>
-      <find>infection_card_</find>
-      <find>card drawn</find>
-      <find>card d</find>
-      <find>bot_dr</find>
-      <find>set_t</find>
-      <find>pdb</find>
-      <find>turn</find>
-      <find>epidemic</find>
-      <find>turn n</find>
-      <find>infecting</find>
-      <find>infection_card_deck</find>
-      <find>c</find>
-      <find>clear</find>
-      <find>clear_</find>
-      <find>clear_d</find>
-      <find>clear_de</find>
-      <find>clear_dec</find>
-      <find>clear_deck</find>
-      <find>if not el</find>
-      <find>bot_d</find>
-      <find>action_dict</find>
-      <find>logger</find>
-      <find>check_done</find>
-      <find>save(</find>
-      <find>_save_to</find>
+      <find>player does</find>
+      <find>player_dict</find>
       <find>reward</find>
+      <find>give</find>
+      <find>new game step draw</find>
+      <find>increment</find>
+      <find>d</find>
+      <find>draw</find>
+      <find>drawing c</find>
+      <find>drawing ca</find>
+      <find>drawing car</find>
+      <find>drawing card</find>
+      <find>drawing cards</find>
+      <find>card drawn</find>
+      <find>bot_dr</find>
+      <find>card draw</find>
+      <find>drawing</find>
+      <find>bot_draw_cards</find>
+      <find>ch</find>
+      <find>check_done</find>
+      <find>state_dict[key]</find>
+      <find>col</find>
+      <find>turn num</find>
+      <find>turn num: 1</find>
+      <find>Done is true</find>
+      <find>turn num: 4</find>
+      <find>done is tr</find>
+      <find>done is true</find>
+      <find>lose</find>
       <find>reward level</find>
     </findStrings>
     <replaceStrings>
@@ -118,6 +125,7 @@
       <replace>step</replace>
       <replace>self.infection_card_deck</replace>
       <replace>logging</replace>
+      <replace>key</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -153,13 +161,13 @@
         <option value="$PROJECT_DIR$/src/epidemic.py" />
         <option value="$PROJECT_DIR$/logs/game.log" />
         <option value="$PROJECT_DIR$/src/player_hand.py" />
-        <option value="$PROJECT_DIR$/src/card_decks.py" />
         <option value="$PROJECT_DIR$/src/setup.py" />
         <option value="$PROJECT_DIR$/setup.py" />
         <option value="$PROJECT_DIR$/src/__init__.py" />
         <option value="$PROJECT_DIR$/src/envs/__init__.py" />
         <option value="$PROJECT_DIR$/src/envs/pandemic_env.py" />
         <option value="$PROJECT_DIR$/src/env_wrapper.py" />
+        <option value="$PROJECT_DIR$/src/card_decks.py" />
         <option value="$PROJECT_DIR$/src/game_env.py" />
         <option value="$PROJECT_DIR$/src/bot_game.py" />
       </list>
@@ -422,13 +430,12 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1920" height="973" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.11288605" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34506243" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3643587" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -449,22 +456,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="6" />
+      <option name="time" value="7" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/player_aw.py" />
-    <entry file="file://$PROJECT_DIR$/src/player_hand_aw.py" />
-    <entry file="file://$PROJECT_DIR$/src/city.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/city_aw.py" />
     <entry file="file://$PROJECT_DIR$/src/citymap.py" />
     <entry file="file://$PROJECT_DIR$/pydemic-master/pydemic.py" />
     <entry file="file://$PROJECT_DIR$/src/pydemic.py" />
@@ -561,34 +557,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/infection_rate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="13" column="17" lean-forward="false" selection-start-line="13" selection-start-column="8" selection-end-line="13" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="224">
-          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/gym/spaces/space.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="25" column="8" lean-forward="false" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/common/env_checker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="87" column="33" lean-forward="false" selection-start-line="87" selection-start-column="33" selection-end-line="87" selection-end-column="33" />
           <folding />
         </state>
       </provider>
@@ -661,16 +633,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="171">
-          <caret line="149" column="0" lean-forward="false" selection-start-line="149" selection-start-column="0" selection-end-line="149" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#34#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/envs/pandemic_env.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
@@ -705,16 +667,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="285" column="32" lean-forward="false" selection-start-line="285" selection-start-column="13" selection-end-line="285" selection-end-column="32" />
-          <folding>
-            <element signature="e#0#16#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/epidemic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
@@ -722,14 +674,6 @@
           <folding>
             <element signature="e#0#40#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/card_decks.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="53" column="0" lean-forward="false" selection-start-line="53" selection-start-column="0" selection-end-line="53" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -745,14 +689,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="184">
           <caret line="591" column="8" lean-forward="false" selection-start-line="591" selection-start-column="8" selection-end-line="591" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/ppo2/ppo2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="167">
-          <caret line="434" column="61" lean-forward="false" selection-start-line="434" selection-start-column="61" selection-end-line="434" selection-end-column="61" />
           <folding />
         </state>
       </provider>
@@ -773,22 +709,114 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="167">
+          <caret line="161" column="22" lean-forward="false" selection-start-line="161" selection-start-column="22" selection-end-line="161" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="224">
+          <caret line="16" column="18" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="18" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/gym/spaces/box.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="269">
+          <caret line="127" column="0" lean-forward="false" selection-start-line="127" selection-start-column="0" selection-end-line="127" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/common/env_checker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="69" column="4" lean-forward="false" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/common/policies.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="178">
+          <caret line="660" column="0" lean-forward="false" selection-start-line="660" selection-start-column="0" selection-end-line="660" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="127" column="30" lean-forward="false" selection-start-line="127" selection-start-column="30" selection-end-line="127" selection-end-column="30" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/card_decks.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="72" column="23" lean-forward="true" selection-start-line="72" selection-start-column="23" selection-end-line="72" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/ppo2/ppo2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1638">
+          <caret line="129" column="0" lean-forward="false" selection-start-line="129" selection-start-column="0" selection-end-line="129" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/common/input.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/game_env.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-574">
-          <caret line="26" column="20" lean-forward="true" selection-start-line="26" selection-start-column="20" selection-end-line="26" selection-end-column="20" />
+        <state relative-caret-position="173">
+          <caret line="13" column="0" lean-forward="true" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
           <folding>
             <element signature="e#0#10#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/infection_rate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="4" column="19" lean-forward="false" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="19" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/outbreak_counter.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="56">
+          <caret line="4" column="21" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/bot_game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="306" column="31" lean-forward="true" selection-start-line="306" selection-start-column="31" selection-end-line="306" selection-end-column="31" />
+        <state relative-caret-position="-124">
+          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
           <folding>
-            <element signature="e#0#21#0" expanded="true" />
+            <element signature="e#1860#2737#0" expanded="false" />
+            <element signature="e#2789#3811#0" expanded="false" />
+            <marker date="1596306934215" expanded="false" signature="22458:24009" ph="..." />
           </folding>
         </state>
       </provider>
