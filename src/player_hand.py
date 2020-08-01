@@ -1,6 +1,4 @@
 import constants as constants
-from reward_tracker import reward_tracker
-
 
 class PlayerHand:
 
@@ -17,7 +15,6 @@ class PlayerHand:
         :return: 
         '''
 
-        reward_tracker.change_reward_level('hand_{}'.format(str(self)))
         self.player_card_discard_deck.add(card)
         self.hand.remove(card)
 
@@ -36,7 +33,6 @@ class PlayerHand:
 
         self.player_card_discard_deck.add(card_to_discard)
         self.hand.remove(card_to_discard)
-        reward_tracker.change_reward_level('hand_{}'.format(str(self)))
 
     def add(self, card):
         '''
@@ -53,7 +49,6 @@ class PlayerHand:
             raise ValueError(constants.PLAYER_HAND_FULL_ERROR, card)
 
         self.hand.append(card)
-        reward_tracker.change_reward_level('hand_{}'.format(str(self)))
 
     def transfer_cty(self, city, other_player):
         '''
@@ -69,7 +64,6 @@ class PlayerHand:
 
         other_player.player_hand.add(card)
         self.hand.remove(card)
-        reward_tracker.change_reward_level('hand_{}'.format(str(self)))
 
         return card
 
@@ -86,7 +80,6 @@ class PlayerHand:
             raise ValueError("Not enough cards to discover cure for {}".format(disease_color))
         [self.discard(card) for card in cure_cards]
 
-        reward_tracker.change_reward_level('hand_{}'.format(str(self)))
 
         disease.cure()
 

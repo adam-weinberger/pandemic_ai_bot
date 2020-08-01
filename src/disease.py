@@ -1,5 +1,4 @@
 import constants as constants
-from reward_tracker import reward_tracker
 
 
 class Disease(object):
@@ -21,8 +20,6 @@ class Disease(object):
 
         self.num_cubes -= amount
 
-        reward_tracker.change_reward_level('infect_{}'.format(amount))
-
         if self.num_cubes <= 0:
             # raise RuntimeError("No disease {} cubes left, you lose".format(self.color), "lose")
             print("No disease {} cubes left, you lose".format(self.color))
@@ -35,8 +32,6 @@ class Disease(object):
         if self.num_cubes > constants.NUM_CUBES:
             raise ValueError("Cannot disinfect, because all disease cubes are off the board")
 
-        reward_tracker.change_reward_level('disinfect_{}'.format(amount))
-
         #TODO check eradication
 
     
@@ -45,8 +40,6 @@ class Disease(object):
         self.is_cured = True
         print("You cured {}".format(self.color))
         Disease.diseases_cured += 1
-
-        reward_tracker.change_reward_level('cure')
 
         if self.num_cubes == constants.NUM_CUBES:
             self.is_eradicated = True

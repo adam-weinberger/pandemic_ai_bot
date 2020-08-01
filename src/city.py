@@ -1,7 +1,5 @@
 from outbreak_counter import OutbreakCounter
 import constants as constants
-from reward_tracker import reward_tracker
-
 
 class City:
 
@@ -117,8 +115,6 @@ class City:
         City.research_station_counter += 1
 
         self.has_research_station = True
-
-        reward_tracker.change_reward_level('added_research_station')
 
     def is_connected(self, other_city):
         '''

@@ -1,7 +1,4 @@
 from random import shuffle
-from reward_tracker import reward_tracker
-
-
 
 class CardDeck(object):
 
@@ -76,4 +73,3 @@ class PlayerCardDiscardDeck(CardDeck):
 
     def add(self, card):
         self.card_list.append(card)
-        reward_tracker.change_reward_level('player_card_discarded')
