@@ -83,11 +83,11 @@ if __name__ == "__main__":
 
     # model = PPO2(MlpPolicy, game_env, verbose=1)
 
-    checkpoint_callback = CheckpointCallback(save_freq=5000, save_path=checkpoint_dir,
+    checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
                                              name_prefix=model_filename)
 
     print("Learning")
-    loaded_model.learn(total_timesteps=100000, callback=checkpoint_callback)
+    loaded_model.learn(total_timesteps=1000000, callback=checkpoint_callback)
 
     print("Saving")
     os.remove(save_dir + model_filename + ".zip")

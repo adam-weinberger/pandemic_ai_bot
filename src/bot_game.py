@@ -27,6 +27,7 @@ class BotGame(Game):
         self.create_action_dict()
 
         self.state_dict = None
+        self.invalid_response = False
         
         # track the step the game is in
         self.create_game_steps()
@@ -55,6 +56,7 @@ class BotGame(Game):
         self.create_action_dict()
 
         self.state_df = None
+        self.invalid_response = False
 
         # track the step the game is in
         self.create_game_steps()
@@ -183,7 +185,7 @@ class BotGame(Game):
                 # game_bot_obs_space.append(len(constants.DISEASE_COLORS) + 1) #+1 b/c includes 0
                 obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
 
-        obs_space = OrderedDict(sorted(obs_space.items(), key=lambda t: t[0]))
+        # obs_space = OrderedDict(sorted(obs_space.items(), key=lambda t: t[0]))
 
         obs_space = spaces.Box(low=0, high=1, shape=(len(self.state_dict),), dtype=np.float32)
 
@@ -192,8 +194,7 @@ class BotGame(Game):
     def game_state_reward(self):
 
         state_dict = {}
-        new_reward_level = 0
-        
+        new_reward_level = 0.0
         #card decks, cards, player cards (deck, p0 hand, p1 hand, discard), infection cards (deck, discarded)
         for card in self.player_card_deck.card_list:
             key = 'player_card_{}_in_deck'.format(card.name)
@@ -225,7 +226,7 @@ class BotGame(Game):
                 state_dict[key] = 0
 
         num_cards_discarded = len(self.player_card_discard_deck.card_list)
-        new_reward_level -= (num_cards_discarded * 2)
+        # new_reward_level -= (num_cards_discarded * 2)
 
         for card in [*self.infection_card_dict.values()]:
             key = 'infection_card_{}_in_deck'.format(card.name)
@@ -258,7 +259,7 @@ class BotGame(Game):
             key = 'is_cured_{}'.format(color)
             state_dict[key] = int(disease.is_cured)
 
-            new_reward_level += int(disease.is_cured) * 24
+            # new_reward_level += int(disease.is_cured) * 24
 
 
         key = 'total_diseases_cured'
@@ -274,24 +275,25 @@ class BotGame(Game):
         #outbreak counter
         key = 'outbreak_level'
         state_dict[key] = np.array([ OutbreakCounter.outbreak_level / constants.MAX_OUTBREAKS]).astype(np.float32)
-        new_reward_level -= OutbreakCounter.outbreak_level * 12
+        # new_reward_level -= OutbreakCounter.outbreak_level * 12
         
 
         #player add shortest paths, TODO to add to action space
+        dist_factor = 8
         for player in [*self.player_dict.values()]:
             city_dist = self.shortest_paths(player.current_city)
             for city_name, dist in city_dist.items():
                 key = "{}_dist_{}".format(player.name, city_name)
-                state_dict[key] = np.array([ dist/8 ]).astype(np.float32) #probably couldn't be higher than 5 but 8 is safe
+                state_dict[key] = np.array([ dist / dist_factor ]).astype(np.float32) #probably couldn't be higher than 5 but 8 is safe
 
         #Distance to cubes for reward
         for city in self.city_dict.values():
             num_cubes = city.total_disease_cubes()
+
             for player in [*self.player_dict.values()]:
                 key = "{}_dist_{}".format(player.name, city.name)
-                dist=state_dict[key]
-                new_reward_level += num_cubes*(3-dist)/9
-
+                dist = state_dict[key][0] * dist_factor
+                new_reward_level += num_cubes * (3 - dist) / 9
         # TODO distance to research station
         #player location
         for player_name, player_obj in self.player_dict.items():
@@ -322,13 +324,16 @@ class BotGame(Game):
         state_np = state_df.to_numpy()
         state_np = np.resize(state_np, (len(state_dict),))
 
-        # +[0, 0, 5, 10, 15, 20, 20, ...] for [0, 1, 2, 3, 4, 5, 6, ...] of the same color cards in a single player's hand
-        color_rewards = [0, 0, 5, 10, 15, 20] + [20] * (constants.HAND_SIZE_LIMIT - 5)
-        for player in [*self.player_dict.values()]:
-            card_colors = [card.color for card in player.cards()]
-            card_colors = Counter(card_colors)
-            new_reward_level += sum([color_rewards[count] for count in card_colors.values()])
+        # # +[0, 0, 5, 10, 15, 20, 20, ...] for [0, 1, 2, 3, 4, 5, 6, ...] of the same color cards in a single player's hand
+        # color_rewards = [0, 0, 5, 10, 15, 20] + [20] * (constants.HAND_SIZE_LIMIT - 5)
+        # for player in [*self.player_dict.values()]:
+        #     card_colors = [card.color for card in player.cards()]
+        #     card_colors = Counter(card_colors)
+        #     new_reward_level += sum([color_rewards[count] for count in card_colors.values()])
 
+        if self.invalid_response:
+            # new_reward_level -= .1 #there are a lot of possible response so this punishment can build up quickly
+            self.invalid_response = False
 
         new_reward_level = new_reward_level / constants.REWARD_LEVEL_SCALE
         reward = new_reward_level - self.reward_level
@@ -356,7 +361,30 @@ class BotGame(Game):
         if len(self.player_card_deck.card_list) == 0 and self.game_step == "draw cards":
             done = True
 
+        #FIXME only for training simple model
+        num_diseases_not_on_map = 0
+        for disease in [*self.disease_dict.values()]:
+            if disease.num_cubes == constants.NUM_CUBES:
+                num_diseases_not_on_map += 1
+        
+        if num_diseases_not_on_map == len(constants.DISEASE_COLORS):
+            done = True
+            status_str = 'All cubes removed. You win.'
+            print(status_str)
+            logging.info(status_str)
+
         return done
+
+    def num_cubes_on_map(self):
+
+        num_diseases_not_on_map = 0
+        num_cubes_left = 0
+        for disease in [*self.disease_dict.values()]:
+            num_cubes_left += (constants.NUM_CUBES - disease.num_cubes)
+        
+        status_str = 'Num cubes on map: {}'.format(num_cubes_left)
+        print(status_str)
+        logging.info(status_str)
         
     def step(self, bot_response):
 
@@ -377,8 +405,8 @@ class BotGame(Game):
             valid_action_list = self.valid_actions()
 
             if bot_response not in valid_action_list:
-                reward = -1
-                observation, _ = self.game_state_reward()
+                self.invalid_response = True
+                observation, reward = self.game_state_reward()
                 done = self.check_done()
                 
                 return observation, reward, done, info
@@ -406,8 +434,8 @@ class BotGame(Game):
                 status_str = "Not in option list"
                 # print(status_str)
                 logging.info(status_str)
-                reward = -1
-                observation, _ = self.game_state_reward()
+                self.invalid_response = False
+                observation, reward = self.game_state_reward()
                 done = self.check_done()
 
                 return observation, reward, done, info
@@ -432,8 +460,8 @@ class BotGame(Game):
                 logging.info(e)
                 # need to go back one game step
                 self._increment_game_step(-1)
-                reward = -1
-                observation, _ = self.game_state_reward()
+                self.invalid_response = False
+                observation, reward = self.game_state_reward()
                 done = self.check_done()
 
                 return observation, reward, done, info
@@ -459,10 +487,11 @@ class BotGame(Game):
                     return observation, reward, done, info
 
                 else:
-                    print(e)
+                    raise e
 
-            self.infect_cities()
+            # self.infect_cities()
             self.next_player()
+            self.num_cubes_on_map()
 
             self._increment_game_step()
 
@@ -475,41 +504,41 @@ class BotGame(Game):
 
         valid_action_list = ['drive_ferry']
 
-        if len(self.current_player.cards()) > 0:
-            valid_action_list.append('direct_flight')
+        # if len(self.current_player.cards()) > 0:
+        #     valid_action_list.append('direct_flight')
+        #
+        # if self.current_player.player_hand.contains_city(self.current_player.current_city):
+        #     valid_action_list.append('charter_flight')
+        #
+        # if self.current_player.current_city.has_research_station and City.research_station_counter > 1:
+        #     valid_action_list.append('shuttle_flight')
 
-        if self.current_player.player_hand.contains_city(self.current_player.current_city):
-            valid_action_list.append('charter_flight')
-
-        if self.current_player.current_city.has_research_station and City.research_station_counter > 1:
-            valid_action_list.append('shuttle_flight')
-
-        if City.research_station_counter < constants.MAX_RESEARCH_STATIONS and not self.current_player.current_city.has_research_station and self.current_player.player_hand.contains_city(self.current_player.current_city):
-            valid_action_list.append('build_research_station')
+        # if City.research_station_counter < constants.MAX_RESEARCH_STATIONS and not self.current_player.current_city.has_research_station and self.current_player.player_hand.contains_city(self.current_player.current_city):
+        #     valid_action_list.append('build_research_station')
         
         if self.current_player.current_city.total_disease_cubes() > 0:
             valid_action_list.append('treat_disease')
 
-        if len(self.current_player.cards()) >= 1:
-            card_colors = [card.color for card in self.current_player.cards() if not isinstance(card, EpidemicCard)]
-            card_colors = Counter(card_colors)
-            max_card_color = max([count for count in card_colors.values()])
-            if self.current_player.current_city.has_research_station and max_card_color >= constants.NUM_CARDS_FOR_CURE: #wont work for any roles that require different number of cards for cure (TODO)
-                valid_action_list.append('discover_cure')
+        # if len(self.current_player.cards()) >= 1:
+        #     card_colors = [card.color for card in self.current_player.cards() if not isinstance(card, EpidemicCard)]
+        #     card_colors = Counter(card_colors)
+        #     max_card_color = max([count for count in card_colors.values()])
+        #     if self.current_player.current_city.has_research_station and max_card_color >= constants.NUM_CARDS_FOR_CURE: #wont work for any roles that require different number of cards for cure (TODO)
+        #         valid_action_list.append('discover_cure')
 
-        if self.current_player.player_hand.contains_city(self.current_player.current_city):
-            other_players = [*self.player_dict.values()]
-            other_players.remove(self.current_player)
-            other_player_in_city = self.current_player.current_city in [player.current_city for player in other_players]
-            if other_player_in_city:
-                valid_action_list.append('give_knowledge')
+        # if self.current_player.player_hand.contains_city(self.current_player.current_city):
+        #     other_players = [*self.player_dict.values()]
+        #     other_players.remove(self.current_player)
+        #     other_player_in_city = self.current_player.current_city in [player.current_city for player in other_players]
+        #     if other_player_in_city:
+        #         valid_action_list.append('give_knowledge')
 
         
         # hard to check criteria especially with more than 2 players (TODO)
         # valid_action_list.append("take_knowledge")
 
-        if self.game_step == "draw_cards":
-            valid_action_list.append('discard_card')
+        # if self.game_step == "draw_cards":
+        #     valid_action_list.append('discard_card')
 
         return valid_action_list
 
@@ -568,7 +597,11 @@ class BotGame(Game):
 
                     if str(e.args[0]) == constants.PLAYER_HAND_FULL_ERROR:
 
-                        player_hand_with_new_card = self.current_player.cards()
+                        print(e)
+                        # pdb.set_trace()
+
+                        player_hand_with_new_card = []
+                        player_hand_with_new_card.extend(self.current_player.cards())
                         player_hand_with_new_card.append(e.args[1])
                         card_colors = [card.color for card in player_hand_with_new_card]
                         card_colors = Counter(card_colors)
@@ -584,6 +617,7 @@ class BotGame(Game):
                                     self.player_card_discard_deck.add(card)
                                 else:
                                     self.current_player.discard_card(card) #don't need to add b/c appended to list reference above
+                                    self.current_player.add_card(e.args[1])
                                 break
 
     def _action_arguments(self, action_name):
