@@ -125,71 +125,191 @@ class BotGame(Game):
     def create_observation_space(self):
 
         # observation space is feasible region for observation (or state) for reinforcement learning algorithm
-        # this space has 416 spaces within it for each variable (e.g. num disease cubes in city A). then each variable has all the possible values in its (e.g. city A can have 0-6 cubes)
+        # this space has 400+ spaces within it for each variable (e.g. num disease cubes in city A). then each variable has all the possible values in its (e.g. city A can have 0-6 cubes)
         
 
         # game_bot_obs_space = []
-        obs_space = {}
+        # obs_space = {}
 
-        for key in self.state_dict.keys():
+        # for key in self.state_dict.keys():
 
-            if "cubes_left" in key:
-                # game_bot_obs_space.append(constants.NUM_CUBES + 1) #+1 b/c includes 0
-                obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
+        #     if "cubes_left" in key:
+        #         # game_bot_obs_space.append(constants.NUM_CUBES + 1) #+1 b/c includes 0
+        #         obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
 
-            elif key in self.game_step_list:
-                # game_bot_obs_space.append(2)
-                obs_space[key] = spaces.Discrete(2)
+        #     elif key in self.game_step_list:
+        #         # game_bot_obs_space.append(2)
+        #         obs_space[key] = spaces.Discrete(2)
 
-            elif "infection_card" in key:
-                # game_bot_obs_space.append(2)
-                obs_space[key] = spaces.Discrete(2)
+        #     elif "infection_card" in key:
+        #         # game_bot_obs_space.append(2)
+        #         obs_space[key] = spaces.Discrete(2)
 
-            elif "infection_rate" in key:
-                # game_bot_obs_space.append(max(constants.INFECTION_RATE))
-                obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
+        #     elif "infection_rate" in key:
+        #         # game_bot_obs_space.append(max(constants.INFECTION_RATE))
+        #         obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
 
-            elif "is_cured" in key:
-                # game_bot_obs_space.append(2)
-                obs_space[key] = spaces.Discrete(2)
+        #     elif "is_cured" in key:
+        #         # game_bot_obs_space.append(2)
+        #         obs_space[key] = spaces.Discrete(2)
 
-            elif "num_cubes" in key:
-                # game_bot_obs_space.append(6) #in theory it could be as high as 12 but in practice it would rarely ever get above 4 let alone six
-                obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
+        #     elif "num_cubes" in key:
+        #         # game_bot_obs_space.append(6) #in theory it could be as high as 12 but in practice it would rarely ever get above 4 let alone six
+        #         obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
 
-            elif "outbreak_level" in key:
-                # game_bot_obs_space.append(constants.MAX_OUTBREAKS + 1) #+1 b/c includes 0
-                obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
+        #     elif "outbreak_level" in key:
+        #         # game_bot_obs_space.append(constants.MAX_OUTBREAKS + 1) #+1 b/c includes 0
+        #         obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
 
-            elif "player_card" in key:
-                # game_bot_obs_space.append(2)
-                obs_space[key] = spaces.Discrete(2)
+        #     elif "player_card" in key:
+        #         # game_bot_obs_space.append(2)
+        #         obs_space[key] = spaces.Discrete(2)
 
-            elif "dist" in key:
-                # game_bot_obs_space.append(8) #probably couldn't be higher than 5 but 8 is safe
-                obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
+        #     elif "dist" in key:
+        #         # game_bot_obs_space.append(8) #probably couldn't be higher than 5 but 8 is safe
+        #         obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
 
-            elif "_in_city_" in key: #which player is in which city
-                # game_bot_obs_space.append(2)
-                obs_space[key] = spaces.Discrete(2)
+        #     elif "_in_city_" in key: #which player is in which city
+        #         # game_bot_obs_space.append(2)
+        #         obs_space[key] = spaces.Discrete(2)
 
-            elif "'s_turn'" in key:
-                # game_bot_obs_space.append(2)
-                obs_space[key] = spaces.Discrete(2)
+        #     elif "'s_turn'" in key:
+        #         # game_bot_obs_space.append(2)
+        #         obs_space[key] = spaces.Discrete(2)
 
-            elif "research_station" in key:
-                # game_bot_obs_space.append(2)
-                obs_space[key] = spaces.Discrete(2)
+        #     elif "research_station" in key:
+        #         # game_bot_obs_space.append(2)
+        #         obs_space[key] = spaces.Discrete(2)
 
-            elif "total_diseases_cured" in key:
-                # game_bot_obs_space.append(len(constants.DISEASE_COLORS) + 1) #+1 b/c includes 0
-                obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
+        #     elif "total_diseases_cured" in key:
+        #         # game_bot_obs_space.append(len(constants.DISEASE_COLORS) + 1) #+1 b/c includes 0
+        #         obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
 
         # obs_space = OrderedDict(sorted(obs_space.items(), key=lambda t: t[0]))
 
         obs_space = spaces.Box(low=0, high=1, shape=(len(self.state_dict),), dtype=np.float32)
 
         return obs_space #spaces.Dict(obs_space) #spaces.MultiDiscrete(game_bot_obs_space)
+
+    def game_state_reward_small(self):
+        state_dict = {}
+        new_reward_level = 0.0
+
+        #card decks, cards, player cards (deck, p0 hand, p1 hand, discard), infection cards (deck, discarded)
+        for color in constants.DISEASE_COLORS:
+            key = 'player_card_{}_in_deck'.format(color)
+            state_dict[key] = 0
+
+            for player in [*self.player_dict.values()]:
+                key = 'player_card_{}_in_{}_hand'.format(color, player.name)
+                state_dict[key] = 0
+
+        for card in self.player_card_deck.card_list:
+            key = 'player_card_{}_in_deck'.format(card.color)
+            if key in state_dict:
+                state_dict[key] += 1
+
+        for player in [*self.player_dict.values()]:
+            for card in player.player_hand.hand:
+                key = 'player_card_{}_in_{}_hand'.format(card.color, player.name)
+                state_dict[key] += 1
+
+        num_player_cards_discarded = len(self.player_card_discard_deck.card_list)
+        state_dict['num_player_cards_discarded'] = num_player_cards_discarded
+        # new_reward_level -= (num_cards_discarded * 2)
+
+        for card in [*self.infection_card_dict.values()]:
+            key = 'infection_card_{}_in_deck'.format(card.color)
+            if key in state_dict:
+                state_dict[key] += 1
+            else:
+                state_dict[key] = 0
+
+        for color, disease in self.disease_dict.items():
+            key = 'cubes_left_{}'.format(color)
+            state_dict[key] = np.array([disease.num_cubes / constants.NUM_CUBES]).astype(np.float32) 
+
+            key = 'is_cured_{}'.format(color)
+            state_dict[key] = int(disease.is_cured)
+
+            # new_reward_level += int(disease.is_cured) * 24
+
+        key = 'total_diseases_cured'
+        state_dict[key] = np.array([Disease.diseases_cured / len(constants.DISEASE_COLORS)]).astype(np.float32)
+
+        #infection rate
+        key = 'infection_rate'
+        cur_infection_rate = InfectionRate.infection_rate[InfectionRate.infection_level]
+        max_infection_rate = max(constants.INFECTION_RATE)
+        state_dict[key] = np.array([cur_infection_rate / max_infection_rate]).astype(np.float32)
+
+        #outbreak counter
+        key = 'outbreak_level'
+        state_dict[key] = np.array([ OutbreakCounter.outbreak_level / constants.MAX_OUTBREAKS]).astype(np.float32)
+        # new_reward_level -= OutbreakCounter.outbreak_level * 12
+
+        dist_factor = 8
+        for player in [*self.player_dict.values()]:
+            city_dist = self.shortest_paths(player.current_city)
+            for city_name, dist in city_dist.items():
+                key = "{}_dist_{}".format(player.name, city_name)
+                state_dict[key] = np.array([ dist / dist_factor ]).astype(np.float32) #probably couldn't be higher than 5 but 8 is safe
+
+        #Distance to cubes for reward
+        for city in self.city_dict.values():
+            num_cubes = city.total_disease_cubes()
+            key ="num_cubes_in_{}".format(city.name)
+            state_dict[key] = num_cubes
+
+            for player in [*self.player_dict.values()]:
+                key = "{}_dist_{}".format(player.name, city.name)
+                dist = state_dict[key][0] * dist_factor
+
+                priority = num_cubes * (3 - dist) / 9
+                new_reward_level += priority
+
+        #which player's turn, dont need last player because it is implied by all zeros
+        for player in self.player_dict.values()[:-1]:
+            key = "{}'s_turn".format(player.name)
+            if player == self.current_player:
+                state_dict[key] = 1
+            else:
+                state_dict[key] = 0
+
+
+        #state of game info TODO 1:1 with which actions are valid
+        for game_step in self.game_step_list[:-1]:
+            if game_step == self.game_step:
+                state_dict[game_step] =  1
+            else:
+                state_dict[game_step] = 0
+
+        # # +[0, 0, 5, 10, 15, 20, 20, ...] for [0, 1, 2, 3, 4, 5, 6, ...] of the same color cards in a single player's hand
+        # color_rewards = [0, 0, 5, 10, 15, 20] + [20] * (constants.HAND_SIZE_LIMIT - 5)
+        # for player in [*self.player_dict.values()]:
+        #     card_colors = [card.color for card in player.cards()]
+        #     card_colors = Counter(card_colors)
+        #     new_reward_level += sum([color_rewards[count] for count in card_colors.values()])
+
+        if self.invalid_response:
+            new_reward_level -= .01 #there are a lot of possible response so this punishment can build up quickly
+            self.invalid_response = False
+
+        state_dict = OrderedDict(sorted(state_dict.items(), key=lambda t: t[0]))
+        state_df = pd.DataFrame(state_dict, index=[0])
+        state_df = state_df.sort_index(axis=1)
+        state_np = state_df.to_numpy()
+        state_np = np.resize(state_np, (len(state_dict),))
+
+        new_reward_level = new_reward_level / constants.REWARD_LEVEL_SCALE
+        reward = new_reward_level - self.reward_level
+
+        self.reward_level = new_reward_level
+
+        self.state_dict = state_dict
+
+        return state_np, reward
+
 
     def game_state_reward(self):
 
@@ -332,7 +452,7 @@ class BotGame(Game):
         #     new_reward_level += sum([color_rewards[count] for count in card_colors.values()])
 
         if self.invalid_response:
-            # new_reward_level -= .1 #there are a lot of possible response so this punishment can build up quickly
+            new_reward_level -= .01 #there are a lot of possible response so this punishment can build up quickly
             self.invalid_response = False
 
         new_reward_level = new_reward_level / constants.REWARD_LEVEL_SCALE
@@ -491,7 +611,7 @@ class BotGame(Game):
 
             # self.infect_cities()
             self.next_player()
-            self.num_cubes_on_map()
+            self.num_cubes_on_map() 
 
             self._increment_game_step()
 
@@ -518,6 +638,8 @@ class BotGame(Game):
         
         if self.current_player.current_city.total_disease_cubes() > 0:
             valid_action_list.append('treat_disease')
+        if self.current_player.current_city.total_disease_cubes() > 1:
+            valid_action_list.remove('drive_ferry') #FIXME later
 
         # if len(self.current_player.cards()) >= 1:
         #     card_colors = [card.color for card in self.current_player.cards() if not isinstance(card, EpidemicCard)]
@@ -597,7 +719,7 @@ class BotGame(Game):
 
                     if str(e.args[0]) == constants.PLAYER_HAND_FULL_ERROR:
 
-                        print(e)
+                        print(str(e))
                         # pdb.set_trace()
 
                         player_hand_with_new_card = []
@@ -677,22 +799,24 @@ class BotGame(Game):
             # current_city.neighbors
             neighbors = [neighbor for neighbor in current_city.neighbors]
 
-            # if current city in player cards hand, then all cities are neighbors, current city card is played
-            if current_city.name in cities_in_player_hand:
-                neighbors.extend([*self.city_dict.values()])
-                cities_in_player_hand.remove(current_city.name)
-                
-            # player cards in hand for direct flight
-            for _ in range(len(cities_in_player_hand)):
-                city_name = cities_in_player_hand[0] #b/c being removed in for loop
-                city = self.city_dict[city_name]
-                neighbors.append(city)
-                cities_in_player_hand.remove(city_name)
 
-            # if current city has research station then all cities with research station are neighbors
-            if current_city.has_research_station:
-                city_research_station_list = list(filter(lambda city: city.has_research_station, [*self.city_dict.values()]))
-                neighbors.extend(city_research_station_list)
+            # #FIXME
+            # # if current city in player cards hand, then all cities are neighbors, current city card is played
+            # if current_city.name in cities_in_player_hand:
+            #     neighbors.extend([*self.city_dict.values()])
+            #     cities_in_player_hand.remove(current_city.name)
+            #
+            # # player cards in hand for direct flight
+            # for _ in range(len(cities_in_player_hand)):
+            #     city_name = cities_in_player_hand[0] #b/c being removed in for loop
+            #     city = self.city_dict[city_name]
+            #     neighbors.append(city)
+            #     cities_in_player_hand.remove(city_name)
+            #
+            # # if current city has research station then all cities with research station are neighbors
+            # if current_city.has_research_station:
+            #     city_research_station_list = list(filter(lambda city: city.has_research_station, [*self.city_dict.values()]))
+            #     neighbors.extend(city_research_station_list)
 
             # remove duplicate neighbors
             neighbors = list(set(neighbors))
@@ -720,6 +844,9 @@ class BotGame(Game):
             visited_list.append(current_city)
 
         return self.city_dist
+    
+    def reward_level(self):
+        return self.reward_level
 
 
 

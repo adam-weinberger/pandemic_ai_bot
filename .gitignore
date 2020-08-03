@@ -1,2 +1,6 @@
 
 *.docx
+*.log
+*.log
+logs/game.log
+*.log

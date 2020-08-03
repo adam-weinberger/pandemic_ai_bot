@@ -5,12 +5,13 @@ from stable_baselines.common.policies import MlpPolicy
 from stable_baselines import PPO2
 from stable_baselines.common.env_checker import check_env
 from stable_baselines.common.callbacks import CheckpointCallback
-from stable_baselines.common.vec_env import DummyVecEnv
+from stable_baselines.common.vec_env import DummyVecEnv, SubprocVecEnv
 from setuptools import  setup
 from gym.envs.registration import register
 import caffeine
 import os
 import shutil
+from timeout_callback import TimeoutCallback
 
 class GameEnv(gym.Env):
 
@@ -49,6 +50,9 @@ class GameEnv(gym.Env):
     def close(self):
         pass
 
+    def reward_level(self):
+        return self.game.reward_level()
+
 if __name__ == "__main__":
 
     register(
@@ -75,8 +79,8 @@ if __name__ == "__main__":
 
     # load the model, and when loading set verbose to 1
     print("Loading")
-    # loaded_model = PPO2.load(save_dir + model_filename, verbose=1, env=DummyVecEnv([GameEnv]))
-    loaded_model = PPO2(MlpPolicy, game_env, verbose=1)
+    # loaded_model = PPO2.load(save_dir + model_filename, verbose=1, env=SubprocVecEnv([GameEnv]))
+    loaded_model = PPO2(MlpPolicy, SubprocVecEnv([GameEnv, GameEnv]), verbose=1)
 
     # show the save hyperparameters
     print("loaded:", "gamma =", loaded_model.gamma, "n_steps =", loaded_model.n_steps)
