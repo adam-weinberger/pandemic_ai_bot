@@ -35,7 +35,7 @@ class Game(object):
         self.create_players()
         
         # create logger
-        logging.basicConfig(level=logging.INFO, filename='../logs/game.log')
+        logging.basicConfig(level=logging.INFO, filename='../logs/game.log', filemode='w')
 
     def play_game(self):
 

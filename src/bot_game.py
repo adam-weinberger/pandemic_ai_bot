@@ -41,6 +41,10 @@ class BotGame(Game):
 
     def reset(self):
 
+        status_str = "Beginning game"
+        print(status_str)
+        logging.info(status_str)
+
         self.disease_dict = {color: Disease(color) for color in constants.DISEASE_COLORS}
         InfectionRate.infection_level = 0
         OutbreakCounter.outbreak_level = 0
@@ -60,9 +64,7 @@ class BotGame(Game):
 
         # track the step the game is in
         self.create_game_steps()
-        status_str = "Beginning game"
-        print(status_str)
-        logging.info(status_str)
+
 
         # set the initial reward level and state data frame
         self.reward_level = 0

@@ -79,8 +79,8 @@ if __name__ == "__main__":
 
     # load the model, and when loading set verbose to 1
     print("Loading")
-    # loaded_model = PPO2.load(save_dir + model_filename, verbose=1, env=SubprocVecEnv([GameEnv]))
-    loaded_model = PPO2(MlpPolicy, SubprocVecEnv([GameEnv, GameEnv]), verbose=1)
+    loaded_model = PPO2.load(save_dir + model_filename, verbose=1, env=SubprocVecEnv([GameEnv, GameEnv, GameEnv, GameEnv]))
+    # loaded_model = PPO2(MlpPolicy, SubprocVecEnv([GameEnv, GameEnv]), verbose=1)
 
     # show the save hyperparameters
     print("loaded:", "gamma =", loaded_model.gamma, "n_steps =", loaded_model.n_steps)

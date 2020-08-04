@@ -1,7 +1,5 @@
 
 *.docx
 *.log
-*.log
 logs/game.log
-*.log
-*.log
+logs/most_recent_models/
