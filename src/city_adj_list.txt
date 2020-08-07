@@ -2,7 +2,7 @@ blue san_francisco chicago los_angeles manila tokyo
 blue chicago montreal atlanta mexico_city los_angeles san_francisco
 blue montreal chicago new_york washington
 blue new_york london madrid washington montreal
-blue washington montreal new_york atlanta
+blue washington miami montreal new_york atlanta
 blue atlanta washington miami chicago
 blue london essen paris madrid new_york
 blue madrid london paris algiers sao_paolo new_york
@@ -37,7 +37,7 @@ black kolkata hong_kong bangkok chennai delhi
 red bangkok hong_kong ho_chi_minh_city jakarta chennai kolkata
 red jakarta bangkok ho_chi_minh_city sydney chennai
 red beijing seoul shanghai
-red shanghai seoul tokyo hong_kong beijing
+red shanghai seoul tokyo hong_kong taipei beijing
 red hong_kong taipei manila ho_chi_minh_city bangkok kolkata shanghai
 red ho_chi_minh_city hong_kong manila jakarta bangkok
 red seoul tokyo shanghai beijing

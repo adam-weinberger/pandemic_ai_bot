@@ -34,7 +34,7 @@ class BotGame(Game):
         
         # set the initial reward level and state data frame
         self.reward_level = 0
-        _, _ = self.game_state_reward()
+        _, _ = self.game_state_reward_small()
 
         self.info = {}
 
@@ -68,7 +68,7 @@ class BotGame(Game):
 
         # set the initial reward level and state data frame
         self.reward_level = 0
-        observation, _ = self.game_state_reward()
+        observation, _ = self.game_state_reward_small()
 
         self.info = {}
 
@@ -126,69 +126,6 @@ class BotGame(Game):
 
     def create_observation_space(self):
 
-        # observation space is feasible region for observation (or state) for reinforcement learning algorithm
-        # this space has 400+ spaces within it for each variable (e.g. num disease cubes in city A). then each variable has all the possible values in its (e.g. city A can have 0-6 cubes)
-        
-
-        # game_bot_obs_space = []
-        # obs_space = {}
-
-        # for key in self.state_dict.keys():
-
-        #     if "cubes_left" in key:
-        #         # game_bot_obs_space.append(constants.NUM_CUBES + 1) #+1 b/c includes 0
-        #         obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
-
-        #     elif key in self.game_step_list:
-        #         # game_bot_obs_space.append(2)
-        #         obs_space[key] = spaces.Discrete(2)
-
-        #     elif "infection_card" in key:
-        #         # game_bot_obs_space.append(2)
-        #         obs_space[key] = spaces.Discrete(2)
-
-        #     elif "infection_rate" in key:
-        #         # game_bot_obs_space.append(max(constants.INFECTION_RATE))
-        #         obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
-
-        #     elif "is_cured" in key:
-        #         # game_bot_obs_space.append(2)
-        #         obs_space[key] = spaces.Discrete(2)
-
-        #     elif "num_cubes" in key:
-        #         # game_bot_obs_space.append(6) #in theory it could be as high as 12 but in practice it would rarely ever get above 4 let alone six
-        #         obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
-
-        #     elif "outbreak_level" in key:
-        #         # game_bot_obs_space.append(constants.MAX_OUTBREAKS + 1) #+1 b/c includes 0
-        #         obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
-
-        #     elif "player_card" in key:
-        #         # game_bot_obs_space.append(2)
-        #         obs_space[key] = spaces.Discrete(2)
-
-        #     elif "dist" in key:
-        #         # game_bot_obs_space.append(8) #probably couldn't be higher than 5 but 8 is safe
-        #         obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
-
-        #     elif "_in_city_" in key: #which player is in which city
-        #         # game_bot_obs_space.append(2)
-        #         obs_space[key] = spaces.Discrete(2)
-
-        #     elif "'s_turn'" in key:
-        #         # game_bot_obs_space.append(2)
-        #         obs_space[key] = spaces.Discrete(2)
-
-        #     elif "research_station" in key:
-        #         # game_bot_obs_space.append(2)
-        #         obs_space[key] = spaces.Discrete(2)
-
-        #     elif "total_diseases_cured" in key:
-        #         # game_bot_obs_space.append(len(constants.DISEASE_COLORS) + 1) #+1 b/c includes 0
-        #         obs_space[key] = spaces.Box(low=0,high=1, shape=(1,), dtype=np.float32)
-
-        # obs_space = OrderedDict(sorted(obs_space.items(), key=lambda t: t[0]))
-
         obs_space = spaces.Box(low=0, high=1, shape=(len(self.state_dict),), dtype=np.float32)
 
         return obs_space #spaces.Dict(obs_space) #spaces.MultiDiscrete(game_bot_obs_space)
@@ -207,23 +144,26 @@ class BotGame(Game):
                 state_dict[key] = 0
 
         for card in self.player_card_deck.card_list:
+            if isinstance(card, EpidemicCard):
+                continue
+
             key = 'player_card_{}_in_deck'.format(card.color)
             if key in state_dict:
-                state_dict[key] += 1
+                state_dict[key] += np.array([1 / 12]).astype(np.float32) #FIXME 12 hard coded
 
         for player in [*self.player_dict.values()]:
             for card in player.player_hand.hand:
                 key = 'player_card_{}_in_{}_hand'.format(card.color, player.name)
-                state_dict[key] += 1
+                state_dict[key] += np.array([1 / 12]).astype(np.float32) #FIXME 12 hard coded
 
         num_player_cards_discarded = len(self.player_card_discard_deck.card_list)
         state_dict['num_player_cards_discarded'] = num_player_cards_discarded
         # new_reward_level -= (num_cards_discarded * 2)
 
         for card in [*self.infection_card_dict.values()]:
-            key = 'infection_card_{}_in_deck'.format(card.color)
+            key = 'infection_card_{}_in_deck'.format(card.city.disease.color)
             if key in state_dict:
-                state_dict[key] += 1
+                state_dict[key] += np.array([1 / 12]).astype(np.float32) #FIXME 12 hard coded
             else:
                 state_dict[key] = 0
 
@@ -261,17 +201,19 @@ class BotGame(Game):
         for city in self.city_dict.values():
             num_cubes = city.total_disease_cubes()
             key ="num_cubes_in_{}".format(city.name)
-            state_dict[key] = num_cubes
+            state_dict[key] = np.array([num_cubes / 6]).astype(np.float32) #FIXME 6 hard coded
+            new_reward_level -= [0, .03, .6, 2][num_cubes]
 
             for player in [*self.player_dict.values()]:
                 key = "{}_dist_{}".format(player.name, city.name)
                 dist = state_dict[key][0] * dist_factor
 
-                priority = num_cubes * (3 - dist) / 9
+                priority = (num_cubes * (3 - dist) / 9) ** 3
                 new_reward_level += priority
 
         #which player's turn, dont need last player because it is implied by all zeros
-        for player in self.player_dict.values()[:-1]:
+        player_list_wo_last = [*self.player_dict.values()][:-1]
+        for player in player_list_wo_last:
             key = "{}'s_turn".format(player.name)
             if player == self.current_player:
                 state_dict[key] = 1
@@ -528,7 +470,7 @@ class BotGame(Game):
 
             if bot_response not in valid_action_list:
                 self.invalid_response = True
-                observation, reward = self.game_state_reward()
+                observation, reward = self.game_state_reward_small()
                 done = self.check_done()
                 
                 return observation, reward, done, info
@@ -539,7 +481,7 @@ class BotGame(Game):
 
             self._increment_game_step()
 
-            observation, reward = self.game_state_reward()
+            observation, reward = self.game_state_reward_small()
             done = self.check_done()
 
             return observation, reward, done, info #return b/c bot_response is for player action not player arg but game_step moved forward
@@ -557,7 +499,7 @@ class BotGame(Game):
                 # print(status_str)
                 logging.info(status_str)
                 self.invalid_response = False
-                observation, reward = self.game_state_reward()
+                observation, reward = self.game_state_reward_small()
                 done = self.check_done()
 
                 return observation, reward, done, info
@@ -583,7 +525,7 @@ class BotGame(Game):
                 # need to go back one game step
                 self._increment_game_step(-1)
                 self.invalid_response = False
-                observation, reward = self.game_state_reward()
+                observation, reward = self.game_state_reward_small()
                 done = self.check_done()
 
                 return observation, reward, done, info
@@ -603,7 +545,7 @@ class BotGame(Game):
                 if len(e.args) > 1 and str(e.args[1]) == "lose":
                     print(e)
 
-                    observation, reward = self.game_state_reward()
+                    observation, reward = self.game_state_reward_small()
                     done = self.check_done()
 
                     return observation, reward, done, info
@@ -617,7 +559,7 @@ class BotGame(Game):
 
             self._increment_game_step()
 
-        observation, reward = self.game_state_reward()
+        observation, reward = self.game_state_reward_small()
         done = self.check_done()
         
         return observation, reward, done, info
@@ -699,7 +641,6 @@ class BotGame(Game):
 
         print("drawing cards")
         logging.info("player_draw_cards")
-        #pdb.set_trace()
 
         # for each card to draw
         for i in range(constants.NUM_PLAYER_CARDS_DRAW):
@@ -722,7 +663,6 @@ class BotGame(Game):
                     if str(e.args[0]) == constants.PLAYER_HAND_FULL_ERROR:
 
                         print(str(e))
-                        # pdb.set_trace()
 
                         player_hand_with_new_card = []
                         player_hand_with_new_card.extend(self.current_player.cards())
@@ -848,6 +788,7 @@ class BotGame(Game):
         return self.city_dist
     
     def reward_level(self):
+        
         return self.reward_level
 
 

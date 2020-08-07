@@ -2,14 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="73bdfc83-2193-4eff-b288-a85c23f35488" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/rl_model.zip" afterPath="$PROJECT_DIR$/logs/rl_model.zip" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/logs/rl_model.zip" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/logs/game.log" afterPath="$PROJECT_DIR$/logs/game.log" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/.ipynb_checkpoints/code_development-checkpoint.ipynb" afterPath="$PROJECT_DIR$/src/.ipynb_checkpoints/code_development-checkpoint.ipynb" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/bot_game.py" afterPath="$PROJECT_DIR$/src/bot_game.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/city_adj_list.txt" afterPath="$PROJECT_DIR$/src/city_adj_list.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/code_development.ipynb" afterPath="$PROJECT_DIR$/src/code_development.ipynb" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game.py" afterPath="$PROJECT_DIR$/src/game.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/constants.py" afterPath="$PROJECT_DIR$/src/constants.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/game_env.py" afterPath="$PROJECT_DIR$/src/game_env.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,12 +24,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="game.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/game.py">
+      <file leaf-file-name="game_env.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/game_env.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="283">
-              <caret line="37" column="88" lean-forward="false" selection-start-line="37" selection-start-column="88" selection-end-line="37" selection-end-column="88" />
-              <folding />
+            <state relative-caret-position="-61">
+              <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#10#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -38,15 +39,85 @@
       <file leaf-file-name="bot_game.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/bot_game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="695">
-              <caret line="583" column="44" lean-forward="false" selection-start-line="583" selection-start-column="44" selection-end-line="583" selection-end-column="44" />
+            <state relative-caret-position="283">
+              <caret line="151" column="59" lean-forward="false" selection-start-line="151" selection-start-column="59" selection-end-line="151" selection-end-column="59" />
               <folding>
-                <element signature="e#1973#2850#0" expanded="false" />
-                <element signature="e#3975#7106#0" expanded="false" />
-                <element signature="e#7155#12252#0" expanded="false" />
-                <element signature="e#12297#18938#0" expanded="false" />
-                <element signature="e#18983#19881#0" expanded="false" />
-                <element signature="e#19924#20239#0" expanded="false" />
+                <element signature="e#1985#2862#0" expanded="false" />
+                <element signature="e#2914#3936#0" expanded="false" />
+                <marker date="1596664674792" expanded="true" signature="473:31828" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="4205:9742" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="4731:4950" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="7548:7893" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="7664:7893" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="8088:8274" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="8393:8540" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="8550:9022" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="9057:9213" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="9777:16428" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="9996:10263" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="10146:10263" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="10316:10837" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="10365:10837" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="10549:10735" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="10596:10735" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="10899:11166" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="11049:11166" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="11357:11453" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="11518:11614" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="11775:12354" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="12474:12785" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="13420:13551" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="13627:13948" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="13746:13948" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="14032:14325" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="14140:14325" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="14334:14394" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="14459:14666" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="14522:14666" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="14745:14931" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="15045:15192" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="15518:15990" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="16025:16181" ph="..." />
+                <marker date="1596664674792" expanded="false" signature="16455:17371" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="16706:16773" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="17024:17126" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="17204:17350" ph="..." />
+                <marker date="1596664674792" expanded="false" signature="17404:17729" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="17772:21759" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="18239:18413" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="18239:19113" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="18467:18694" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="19328:20886" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="19601:19940" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="20113:20309" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="20345:20845" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="20997:21608" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="21138:21463" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="21204:21412" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="21789:24105" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="21844:22566" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="22846:24071" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="24155:25108" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="24379:24985" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="25139:26942" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="25303:26942" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="25586:26942" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="25702:26942" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="25778:26942" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="26369:26942" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="26528:26942" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="26697:26904" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="26989:28540" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="27449:27586" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="27852:28048" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="28094:28235" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="28281:28422" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="28569:28637" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="28680:31753" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="29327:31722" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="29455:29528" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="29617:30695" ph="..." />
+                <marker date="1596664674792" expanded="true" signature="31786:31828" ph="..." />
               </folding>
             </state>
           </provider>
@@ -55,72 +126,8 @@
       <file leaf-file-name="constants.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/constants.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="city.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/city.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="261">
-              <caret line="104" column="11" lean-forward="false" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="game_env.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/game_env.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-              <folding>
-                <element signature="e#0#10#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ppo2.py" pinned="false" current-in-tab="false">
-        <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/ppo2/ppo2.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4046">
-              <caret line="301" column="8" lean-forward="false" selection-start-line="301" selection-start-column="8" selection-end-line="301" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="player.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/player.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2114">
-              <caret line="153" column="29" lean-forward="false" selection-start-line="153" selection-start-column="29" selection-end-line="153" selection-end-column="29" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="player_hand.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/player_hand.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="140">
-              <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-              <folding>
-                <marker date="1596343430305" expanded="true" signature="1073:1195" ph="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="disease.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/disease.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="112">
-              <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="294">
+              <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -137,17 +144,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>PLAYER_HAND_FUL</find>
-      <find>PLAYER_HAND_FULL</find>
-      <find>num cubes on map: 16</find>
-      <find>Num cubes on</find>
-      <find>num cub</find>
-      <find>.1</find>
-      <find>p</find>
-      <find>pla</find>
-      <find>player</find>
-      <find>player_</find>
-      <find>player_hand</find>
       <find>player_hand_</find>
       <find>player_hand_f</find>
       <find>player_hand_fu</find>
@@ -167,6 +163,17 @@
       <find>num cubes on map</find>
       <find>num cubes on</find>
       <find>beginnin</find>
+      <find>action_space</find>
+      <find>start</find>
+      <find>episode_starts</find>
+      <find>num cubes on map: 12</find>
+      <find>ac</find>
+      <find>action chosen</find>
+      <find>create_players</find>
+      <find>reset</find>
+      <find>state_dict</find>
+      <find>game_state_reward</find>
+      <find>self.state_dict</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -182,6 +189,7 @@
       <replace>self.infection_card_deck</replace>
       <replace>logging</replace>
       <replace>key</replace>
+      <replace>game_state_reward_small</replace>
     </replaceStrings>
     <dirStrings>
       <dir>$PROJECT_DIR$/src</dir>
@@ -208,7 +216,6 @@
         <option value="$PROJECT_DIR$/src/city.py" />
         <option value="$PROJECT_DIR$/src/cards.py" />
         <option value="$PROJECT_DIR$/src/player.py" />
-        <option value="$PROJECT_DIR$/src/constants.py" />
         <option value="$PROJECT_DIR$/src/disease.py" />
         <option value="$PROJECT_DIR$/src/reinforcement_learning.py" />
         <option value="$PROJECT_DIR$/src/shortest_paths.py" />
@@ -223,10 +230,13 @@
         <option value="$PROJECT_DIR$/src/card_decks.py" />
         <option value="$PROJECT_DIR$/logs/game.log" />
         <option value="$PROJECT_DIR$/src/epidemic.py" />
-        <option value="$PROJECT_DIR$/src/bot_game.py" />
-        <option value="$PROJECT_DIR$/src/game_env.py" />
         <option value="$PROJECT_DIR$/src/game.py" />
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/city_adj_list.txt" />
+        <option value="$PROJECT_DIR$/src/expert_dataset.py" />
+        <option value="$PROJECT_DIR$/src/bot_game.py" />
+        <option value="$PROJECT_DIR$/src/constants.py" />
+        <option value="$PROJECT_DIR$/src/game_env.py" />
       </list>
     </option>
   </component>
@@ -252,6 +262,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -295,7 +306,6 @@
         </subPane>
       </pane>
       <pane id="Scratches" />
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -450,10 +460,29 @@
       <option name="EMULATE_TERMINAL" value="false" />
       <method />
     </configuration>
-    <list size="3">
+    <configuration default="false" name="expert_dataset" type="PythonConfigurationType" factoryName="Python">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/anaconda/envs/adam_env/bin/python3.7" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/src" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="Pandemic" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/src/expert_dataset.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <method />
+    </configuration>
+    <list size="4">
       <item index="0" class="java.lang.String" itemvalue="Python.reinforcement_learning" />
       <item index="1" class="java.lang.String" itemvalue="Python.game_env" />
-      <item index="2" class="java.lang.String" itemvalue="Python.game" />
+      <item index="2" class="java.lang.String" itemvalue="Python.expert_dataset" />
+      <item index="3" class="java.lang.String" itemvalue="Python.game" />
     </list>
     <recent_temporary>
       <list size="1">
@@ -490,10 +519,11 @@
     <frame x="-1440" y="23" width="1440" height="877" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15665236" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16237482" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3656051" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32845894" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4356688" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32918552" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -506,7 +536,6 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32855567" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -515,20 +544,11 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="8" />
+      <option name="time" value="10" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/pydemic.py" />
-    <entry file="file://$PROJECT_DIR$/src/infection_deck.py" />
-    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/unittest/case.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="367">
-          <caret line="465" column="8" lean-forward="false" selection-start-line="465" selection-start-column="8" selection-end-line="465" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/infection_turn.py" />
     <entry file="file://$PROJECT_DIR$/src/player_turn.py" />
     <entry file="file://$PROJECT_DIR$/src/player_aw.py" />
@@ -637,13 +657,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/common/env_checker.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="69" column="4" lean-forward="false" selection-start-line="69" selection-start-column="4" selection-end-line="69" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/common/policies.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="178">
@@ -669,32 +682,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="25">
           <caret line="15" column="17" lean-forward="false" selection-start-line="15" selection-start-column="16" selection-end-line="15" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cards.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="259">
-          <caret line="36" column="20" lean-forward="false" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/city_colors.py" />
-    <entry file="file://$PROJECT_DIR$/src/city_adj_list.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="11" column="8" lean-forward="false" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/epidemic.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="13" column="0" lean-forward="false" selection-start-line="13" selection-start-column="0" selection-end-line="13" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#40#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -726,7 +721,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -734,66 +728,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
           <caret line="10" column="8" lean-forward="false" selection-start-line="10" selection-start-column="8" selection-end-line="10" selection-end-column="8" />
-          <folding>
-            <marker date="1596343430305" expanded="true" signature="1073:1195" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/player.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2114">
-          <caret line="153" column="29" lean-forward="false" selection-start-line="153" selection-start-column="29" selection-end-line="153" selection-end-column="29" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/constants.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="12" column="25" lean-forward="false" selection-start-line="12" selection-start-column="25" selection-end-line="12" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/ppo2/ppo2.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4046">
-          <caret line="301" column="8" lean-forward="false" selection-start-line="301" selection-start-column="8" selection-end-line="301" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/city.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="261">
-          <caret line="104" column="11" lean-forward="false" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/bot_game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="695">
-          <caret line="583" column="44" lean-forward="false" selection-start-line="583" selection-start-column="44" selection-end-line="583" selection-end-column="44" />
-          <folding>
-            <element signature="e#1973#2850#0" expanded="false" />
-            <element signature="e#3975#7106#0" expanded="false" />
-            <element signature="e#7155#12252#0" expanded="false" />
-            <element signature="e#12297#18938#0" expanded="false" />
-            <element signature="e#18983#19881#0" expanded="false" />
-            <element signature="e#19924#20239#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/game_env.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="77" column="0" lean-forward="true" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#10#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -801,15 +735,188 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="56">
           <caret line="4" column="24" lean-forward="false" selection-start-line="4" selection-start-column="24" selection-end-line="4" selection-end-column="24" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/trpo_mpi/trpo_mpi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="13" column="35" lean-forward="true" selection-start-line="13" selection-start-column="35" selection-end-line="13" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/code_development.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="-1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="37" column="88" lean-forward="false" selection-start-line="37" selection-start-column="88" selection-end-line="37" selection-end-column="88" />
+        <state relative-caret-position="56">
+          <caret line="283" column="19" lean-forward="false" selection-start-line="283" selection-start-column="19" selection-end-line="283" selection-end-column="19" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/ppo2/ppo2.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="301" column="8" lean-forward="false" selection-start-line="301" selection-start-column="8" selection-end-line="301" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/player.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="153" column="29" lean-forward="false" selection-start-line="153" selection-start-column="29" selection-end-line="153" selection-end-column="29" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cards.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="138">
+          <caret line="36" column="20" lean-forward="false" selection-start-line="36" selection-start-column="20" selection-end-line="36" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/city_adj_list.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="27" column="38" lean-forward="false" selection-start-line="27" selection-start-column="38" selection-end-line="27" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/anaconda/envs/adam_env/lib/python3.7/site-packages/stable_baselines/common/env_checker.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="181">
+          <caret line="88" column="0" lean-forward="false" selection-start-line="88" selection-start-column="0" selection-end-line="88" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/expert_dataset.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-614">
+          <caret line="77" column="16" lean-forward="false" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#28#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/city.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1442">
+          <caret line="104" column="11" lean-forward="false" selection-start-line="104" selection-start-column="11" selection-end-line="104" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bot_game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="151" column="59" lean-forward="false" selection-start-line="151" selection-start-column="59" selection-end-line="151" selection-end-column="59" />
+          <folding>
+            <element signature="e#1985#2862#0" expanded="false" />
+            <element signature="e#2914#3936#0" expanded="false" />
+            <marker date="1596664674792" expanded="true" signature="473:31828" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="4205:9742" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="4731:4950" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="7548:7893" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="7664:7893" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="8088:8274" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="8393:8540" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="8550:9022" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="9057:9213" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="9777:16428" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="9996:10263" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="10146:10263" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="10316:10837" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="10365:10837" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="10549:10735" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="10596:10735" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="10899:11166" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="11049:11166" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="11357:11453" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="11518:11614" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="11775:12354" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="12474:12785" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="13420:13551" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="13627:13948" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="13746:13948" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="14032:14325" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="14140:14325" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="14334:14394" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="14459:14666" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="14522:14666" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="14745:14931" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="15045:15192" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="15518:15990" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="16025:16181" ph="..." />
+            <marker date="1596664674792" expanded="false" signature="16455:17371" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="16706:16773" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="17024:17126" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="17204:17350" ph="..." />
+            <marker date="1596664674792" expanded="false" signature="17404:17729" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="17772:21759" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="18239:18413" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="18239:19113" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="18467:18694" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="19328:20886" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="19601:19940" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="20113:20309" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="20345:20845" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="20997:21608" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="21138:21463" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="21204:21412" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="21789:24105" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="21844:22566" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="22846:24071" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="24155:25108" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="24379:24985" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="25139:26942" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="25303:26942" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="25586:26942" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="25702:26942" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="25778:26942" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="26369:26942" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="26528:26942" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="26697:26904" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="26989:28540" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="27449:27586" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="27852:28048" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="28094:28235" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="28281:28422" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="28569:28637" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="28680:31753" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="29327:31722" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="29455:29528" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="29617:30695" ph="..." />
+            <marker date="1596664674792" expanded="true" signature="31786:31828" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/constants.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/game_env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-61">
+          <caret line="63" column="0" lean-forward="true" selection-start-line="63" selection-start-column="0" selection-end-line="63" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#10#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

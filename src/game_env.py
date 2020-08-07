@@ -12,6 +12,9 @@ import caffeine
 import os
 import shutil
 from timeout_callback import TimeoutCallback
+from stable_baselines.gail import ExpertDataset
+import numpy as np
+
 
 class GameEnv(gym.Env):
 
@@ -31,12 +34,11 @@ class GameEnv(gym.Env):
         self.action_list = list(self.game.action_dict.keys())
         self.action_space = spaces.Discrete(len(self.action_list))
 
-        
         self.observation_space = self.game.create_observation_space()
 
     def step(self, action):
         action_name = self.action_list[action]
-        observation, reward, done, info = self.game.step(action_name) #TODO rescale observations
+        observation, reward, done, info = self.game.step(action_name)
         return observation, reward, done, info
 
     def reset(self):
@@ -79,19 +81,25 @@ if __name__ == "__main__":
 
     # load the model, and when loading set verbose to 1
     print("Loading")
-    loaded_model = PPO2.load(save_dir + model_filename, verbose=1, env=SubprocVecEnv([GameEnv, GameEnv, GameEnv, GameEnv]))
+    # loaded_model = PPO2.load(save_dir + model_filename, verbose=1, env=SubprocVecEnv([GameEnv, GameEnv, GameEnv, GameEnv]))
     # loaded_model = PPO2(MlpPolicy, SubprocVecEnv([GameEnv, GameEnv]), verbose=1)
+
+    # print(("pretraining"))
+    # dataset = ExpertDataset(expert_path=save_dir + 'expert_pandemic.npz',
+    #                     traj_limitation=1, batch_size=128)
+    loaded_model = PPO2(MlpPolicy, env=SubprocVecEnv([GameEnv, GameEnv]), verbose=1)
+    # Pretrain the PPO2 model
+    # loaded_model.pretrain(dataset, n_epochs=1000)
+
 
     # show the save hyperparameters
     print("loaded:", "gamma =", loaded_model.gamma, "n_steps =", loaded_model.n_steps)
 
-    # model = PPO2(MlpPolicy, game_env, verbose=1)
-
-    checkpoint_callback = CheckpointCallback(save_freq=10000, save_path=checkpoint_dir,
+    checkpoint_callback = CheckpointCallback(save_freq=50000, save_path=checkpoint_dir,
                                              name_prefix=model_filename)
 
     print("Learning")
-    loaded_model.learn(total_timesteps=1000000, callback=checkpoint_callback)
+    loaded_model.learn(total_timesteps=2000000, callback=checkpoint_callback)
 
     print("Saving")
     os.remove(save_dir + model_filename + ".zip")
